@@ -21,6 +21,10 @@
     
 }
 
+.tmp {
+    color: 'white';
+}
+
 .ContainerItemIcon {
     position: absolute;
     top: 50%;

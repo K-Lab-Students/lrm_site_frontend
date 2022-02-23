@@ -1,25 +1,20 @@
 import './style.css'
-
-const NavButton = (props) => <button className='NavButtons'> {props.text} </button>
-
+import { Nav } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Header = () => {
     return (
-    <header className='Header'>
-        <div className='HeaderContentDiv'>
-
-            {/* <div className='Container'> */}
-                <div className='ContainerItemIcon'> Иконка </div>
-                <div className='ContainerItemNav'>
-                    <nav>
-                        <a href='http://htmlbook.ru/html/nav'><NavButton text='one'/></a>
-                        <a href='http://htmlbook.ru/html/nav'><NavButton text='two'/></a>
-                    </nav>
-                </div>
-            {/* </div> */}
-
-        </div>
-    </header>
+        <Nav defaultActiveKey="/home" as="ul" className='Header'>
+            <Nav.Item as="li">
+                <Nav.Link href="/home"><span style={{color: 'white'}}>Active</span></Nav.Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+                <Nav.Link eventKey="link-1"><span style={{color: 'white'}}>other</span></Nav.Link>
+            </Nav.Item>
+            <Nav.Item as="li">
+                <Nav.Link eventKey="link-2"><span style={{color: 'white'}}>oky</span></Nav.Link>
+            </Nav.Item>
+        </Nav>
     )
 }
 
