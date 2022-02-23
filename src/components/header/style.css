@@ -1,0 +1,60 @@
+.Header {
+    background-color: #5762f8; /* Green */
+    /* border: none; */
+    height: 50px;
+}
+
+.HeaderContentDiv {
+    margin-left: 5%;
+    margin-right: 3%;
+    padding-left: 5%;
+    padding-right: 2%;
+    height: 50px;
+    width: auto;
+}
+
+.Container {
+    height: 50px;
+    position: relative;
+    white-space: normal;
+    width: fit-content;
+    
+}
+
+.ContainerItemIcon {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ContainerItemNav {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.NavButtons {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.NavButtonsSpan {
+    align-content: center;
+}

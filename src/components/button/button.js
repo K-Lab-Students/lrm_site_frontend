@@ -1,5 +1,6 @@
-import style from './style';
-import './stylecss.css';
+import './style.css';
+
+import React from 'react';
 
 const Button = (props) => <button className='Button'> {props.text} </button>
 

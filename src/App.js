@@ -1,14 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Button from './components/button/Button';
+import Button from './components/button/button';
+import Header from './components/header/header'
 import ReactDOM from 'react-dom';
 
 const App = () => {
   return (
-    <div className="App">
-      <Button text='Регистрация' />
-    </div>
-    
+    <Header />
   );
 }
 
