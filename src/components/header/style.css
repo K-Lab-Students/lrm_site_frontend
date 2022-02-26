@@ -1,9 +1,7 @@
 .Header {
     background-color: #5762f8; /* Green */
-    /* border: none; */
     height: 50px;
 }
-
 .HeaderContentDiv {
     margin-left: 5%;
     margin-right: 3%;
@@ -12,19 +10,12 @@
     height: 50px;
     width: auto;
 }
-
 .Container {
     height: 50px;
     position: relative;
     white-space: normal;
-    width: fit-content;
-    
+    /* width: fit-content; */
 }
-
-.tmp {
-    color: 'white';
-}
-
 .ContainerItemIcon {
     position: absolute;
     top: 50%;
@@ -34,17 +25,16 @@
     margin-left: 10px;
     margin-right: 10px;
 }
-
 .ContainerItemNav {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     display: inline-block;
     margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 10px; */
+    color: 'white';
 }
-
 .NavButtons {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -58,7 +48,6 @@
     margin-left: 20px;
     margin-right: 20px;
 }
-
 .NavButtonsSpan {
     align-content: center;
 }
