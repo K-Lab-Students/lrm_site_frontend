@@ -1,42 +1,55 @@
-import './style.css'
-import { Nav, Navbar, Container, NavbarBrand, NavDropdown } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react';
+import { useState } from 'react';
+import { Header, MediaQuery, Burger, Button, useMantineTheme, ActionIcon, Container, Text } from '@mantine/core';
 
-const handlerSelect = (eventKey) => {
-    // some todo
-}
+const MyHeader = ({openedBurger, setOpenedBurger}) => {
 
-const Header = () => {
+    const theme = useMantineTheme()
+
     return (
-        <Navbar collapseOnSelect fixed='top' expand='md' bg='primary' variant='dark' style={{marginBottom:10}}>
-            <NavbarBrand>
-                <Nav.Link href='/'> 
-                    <img src="https://img.icons8.com/office/30/000000/brain.png" />
-                </Nav.Link>
-            </NavbarBrand>
-            <Navbar.Toggle aria-controls='responsive-navbar-nav' />
-            <Navbar.Collapse id='responsive-navbar-nav'>
-                <Container>
-                    <Nav className="justify-content-end" style={{ width: "100%" }} onSelect={handlerSelect}>
-                        <Nav.Link  href='/' eventKey='1' style={{marginRight: 20}}> Главная страница </Nav.Link>
-                        <NavDropdown title='Компетенции' id="nav-dropdown" style={{marginRight: 20}}>
-                            <NavDropdown.Item eventKey="2.1">Программирование МК</NavDropdown.Item>
-                            <NavDropdown.Item eventKey="2.2">Нейронные сети</NavDropdown.Item>
-                            <NavDropdown.Item eventKey="2.3">Электроника</NavDropdown.Item>
-                            <NavDropdown.Item eventKey="2.4">Конструирование</NavDropdown.Item>
-                        </NavDropdown>
-                        <Nav.Link href='/' eventKey='3' style={{marginRight: 20}}> О нас </Nav.Link>
-                    </Nav>
+        <Header height={70} padding="md">
+            <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+                <Container size='sm' style={{marginLeft: 70, marginRight: 0}}>
+                    <ActionIcon>
+                        <img src="https://img.icons8.com/office/30/000000/brain.png"/>
+                    </ActionIcon>
+                    <Text>K-Lab</Text>
                 </Container>
-                <Container>
-                    <Nav className="justify-content-end" style={{ width: "100%" }} onSelect={handlerSelect}>
-                        <Nav.Link href='/' eventKey='4'> Вход </Nav.Link>
-                        <Nav.Link href='/' eventKey='5'> Регистрация </Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar.Collapse>
-        </Navbar>
+
+                <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+                    <Burger
+                        opened={openedBurger}
+                        onClick={() => setOpenedBurger((o) => !o)}
+                        size="sm"
+                        color={theme.colors.gray[6]}
+                        mr="xl"
+                    />
+                </MediaQuery>
+
+                <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+                    <Container>
+                        <Button variant='subtle'>
+                            <Text>Новости</Text>
+                        </Button>
+                        <Button variant='subtle'>
+                            <Text>Компетенции</Text>
+                        </Button>
+                        <Button variant='subtle'>
+                            <Text>О нас</Text>
+                        </Button>
+                    </Container>
+                </MediaQuery>
+
+                <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+                    <Container style={{marginRight: 0}}>
+                        <Button>
+                            <Text>Вход</Text>
+                        </Button>
+                    </Container>
+                </MediaQuery>
+            </div>
+        </Header>
     )
 }
 
-export default Header
+export default MyHeader

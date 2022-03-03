@@ -1,6 +1,6 @@
 import { Col, Container, Table, Row } from 'react-bootstrap'
 
-import Header from "../header/header"
+import Header from "../header/header.jsx"
 import MainBody from '../mainBody/mainBody'
 
 const Page = () => {
