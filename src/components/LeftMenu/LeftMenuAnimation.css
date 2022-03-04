@@ -1,0 +1,17 @@
+.left-menu-enter {
+  opacity: 0;
+}
+
+.left-menu-enter-active {
+  opacity: 1;
+  transition: all 200ms ease-in-out;
+}
+
+.left-menu-exit {
+  opacity: 1;
+}
+
+.left-menu-exit-active {
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+}
