@@ -1,29 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import { AppShell, Container, Text, useMantineTheme, Group, Modal, Button, Grid } from '@mantine/core';
 
-import { useState } from 'react';
-import { AppShell, Burger, Header, MediaQuery, Navbar, Text, useMantineTheme } from '@mantine/core';
-
-import MyHeader from './components/header/header';
-import MyNavbar from './components/header/navbar';
+import MyHeader from './components/Header/MyHeader';
+import LeftMenu from './components/leftMenu/LeftMenu';
+import MainBody from './components/MainBody/MainBody';
 
 function App() {
 
-  const [openedBurger, setOpenedBurger] = useState(false)
+	const [openedMenu, setOpenedMenu] = useState(false);
 
-  return (
-    <AppShell
-      navbarOffsetBreakpoint="sm"
-      fixed
-      header={
-        <MyHeader openedBurger={openedBurger} setOpenedBurger={setOpenedBurger}/>
-      }
-      navbar={
-        <MyNavbar openedNavbar={openedBurger}/>
-      }
-    >
-      <Text>Resize app to see responsive navbar in action</Text>
-    </AppShell>
-  );
+	return (
+		<AppShell
+			navbarOffsetBreakpoint="sm"
+			fixed
+			header={
+				<MyHeader setOpenedMenu={setOpenedMenu} />
+			}
+		>
+			<LeftMenu openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} />
+
+			<MainBody />
+		</AppShell>
+	);
 }
 
 export default App;

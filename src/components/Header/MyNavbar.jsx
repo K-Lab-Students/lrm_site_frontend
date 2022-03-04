@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import { Navbar, MediaQuery, Burger, Button, useMantineTheme, ActionIcon, Container, Text, Divider } from '@mantine/core';
+import { Navbar, MediaQuery, Button, Text, Divider } from '@mantine/core';
 
-const MyNavbar = ({openedNavbar}) => {
+const MyNavbar = ({ openedNavbar }) => {
 
     return (
         <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
@@ -25,9 +25,9 @@ const MyNavbar = ({openedNavbar}) => {
                     </Button>
                 </Navbar.Section>
 
-                <Divider/>
+                <Divider />
 
-                <Navbar.Section style={{marginTop: 10}}>
+                <Navbar.Section style={{ marginTop: 10 }}>
                     <Button>
                         <Text>Вход</Text>
                     </Button>
