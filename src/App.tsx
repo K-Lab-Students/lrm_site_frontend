@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import { AppShell, Container, Text, useMantineTheme, Group, Modal, Button, Grid } from '@mantine/core';
 
 import MyHeader from './components/Header/MyHeader';
-import LeftMenu from './components/leftMenu/LeftMenu';
+import LeftMenu from './components/LeftMenu/LeftMenu';
 import MainBody from './components/MainBody/MainBody';
 
 function App() {
