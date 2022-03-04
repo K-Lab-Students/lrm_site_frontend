@@ -1,14 +1,12 @@
-import React from 'react';
-import { useState } from 'react';
 import { Navbar, MediaQuery, Button, Text, Divider } from '@mantine/core';
 
 const MyNavbar = ({ openedNavbar }) => {
 
     return (
         <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-            <Navbar padding="md" hidden={!openedNavbar} width={{}}>
+            <Navbar padding="md" hidden={!openedNavbar}>
                 <Navbar.Section>
-                    <Button variant='subtle'>
+                    <Button variant='subtle' style={{marginTop: 10}}>
                         <Text>Новости</Text>
                     </Button>
                 </Navbar.Section>

@@ -1,21 +1,15 @@
-import React from 'react';
-import { useState } from 'react';
 import { Header, MediaQuery, Burger, Button, useMantineTheme, ActionIcon, Container, Text } from '@mantine/core';
 
 const MyHeader = ({ setOpenedMenu }) => {
 
     const theme = useMantineTheme()
 
-    const burgerClicked = () => {
-
-    }
-
     return (
         <Header height={70} padding="md">
             <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
                 <Container size='sm' style={{ paddingLeft: 70, marginRight: 0, marginLeft: 0 }}>
                     <ActionIcon>
-                        <img src="https://img.icons8.com/office/30/000000/brain.png" />
+                        <img src="https://img.icons8.com/office/30/000000/brain.png" alt='k-lab logo' />
                     </ActionIcon>
                     <Text>K-Lab</Text>
                 </Container>
