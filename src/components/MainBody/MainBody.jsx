@@ -1,15 +1,17 @@
 import React from "react";
 
-import { Grid, Container, MediaQuery } from "@mantine/core";
-import Post from "../Post/Post";
-import PostsGrid from "../Post/PostsGrid";
+import PostsGrid from "../PosGrid/PostsGrid";
+import Footer from "../Footer/Footer";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 import styles from './MainBodyStyle.module.css'
 
 const MainBody = () => {
     return (
         <div className={styles.mainBody}>
+            <ScrollToTop/>
             <PostsGrid />
+            <Footer />
         </div>
     )
 }

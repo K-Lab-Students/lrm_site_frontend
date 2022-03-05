@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group";
 
 import './LeftMenuAnimation.css'
 
-const LeftMenu = ({ openedMenu, setOpenedMenu }) => {
+const LeftMenu = ({ openedMenu, setOpenedMenu, setMainButtonsStates }) => {
 
     return (
         <CSSTransition in={openedMenu} timeout={100} classNames='left-menu'>
@@ -12,7 +12,7 @@ const LeftMenu = ({ openedMenu, setOpenedMenu }) => {
                 visible={openedMenu}
                 setVisible={setOpenedMenu}
             >
-                <MyNavbar openedNavbar={true} />
+                <MyNavbar openedNavbar={true} setMainButtonsStates={setMainButtonsStates} />
             </ModalWindow>
         </CSSTransition>
     )

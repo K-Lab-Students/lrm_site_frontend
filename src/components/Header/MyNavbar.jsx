@@ -1,34 +1,28 @@
 import { Navbar, MediaQuery, Button, Text, Divider } from '@mantine/core';
 
-const MyNavbar = ({ openedNavbar }) => {
+import { HeaderButtonNews, HeaderButtonCompetentions, HeaderButtonAbout, HeaderButtonSingIn } from '../HeaderButtons/HeaderButtons';
+
+const MyNavbar = ({ openedNavbar, setMainButtonsStates }) => {
 
     return (
         <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
             <Navbar padding="md" hidden={!openedNavbar}>
                 <Navbar.Section>
-                    <Button variant='subtle' style={{marginTop: 10}}>
-                        <Text>Новости</Text>
-                    </Button>
+                    <HeaderButtonNews style={{ marginTop: 10 }} setState={setMainButtonsStates} />
                 </Navbar.Section>
 
                 <Navbar.Section>
-                    <Button variant='subtle'>
-                        <Text>Компетенции</Text>
-                    </Button>
+                    <HeaderButtonCompetentions setState={setMainButtonsStates} />
                 </Navbar.Section>
 
                 <Navbar.Section>
-                    <Button variant='subtle'>
-                        <Text>О нас</Text>
-                    </Button>
+                    <HeaderButtonAbout setState={setMainButtonsStates} />
                 </Navbar.Section>
 
                 <Divider />
 
                 <Navbar.Section style={{ marginTop: 10 }}>
-                    <Button>
-                        <Text>Вход</Text>
-                    </Button>
+                    <HeaderButtonSingIn setState={setMainButtonsStates} />
                 </Navbar.Section>
             </Navbar>
         </MediaQuery>

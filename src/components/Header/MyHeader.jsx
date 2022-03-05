@@ -1,10 +1,12 @@
-import { Header, MediaQuery, Burger, Button, useMantineTheme, ActionIcon, Container, Text } from '@mantine/core';
+import { Header, MediaQuery, Burger, useMantineTheme, ActionIcon, Container, Text } from '@mantine/core';
 
-const MyHeader = ({ openedMenu, setOpenedMenu }) => {
+import { HeaderButtonNews, HeaderButtonCompetentions, HeaderButtonAbout, HeaderButtonSingIn } from '../HeaderButtons/HeaderButtons'
+
+const MyHeader = ({ openedMenu, setOpenedMenu, setMainButtonsStates }) => {
 
     const theme = useMantineTheme()
 
-    const stickyHeader = openedMenu ? {} : {position: 'sticky'}
+    const stickyHeader = openedMenu ? {} : { position: 'sticky' }
 
     return (
         <Header height={70} padding="md" style={stickyHeader}>
@@ -28,23 +30,15 @@ const MyHeader = ({ openedMenu, setOpenedMenu }) => {
 
                 <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
                     <Container>
-                        <Button variant='subtle'>
-                            <Text>Новости</Text>
-                        </Button>
-                        <Button variant='subtle'>
-                            <Text>Компетенции</Text>
-                        </Button>
-                        <Button variant='subtle'>
-                            <Text>О нас</Text>
-                        </Button>
+                        <HeaderButtonNews setState={setMainButtonsStates} />
+                        <HeaderButtonCompetentions setState={setMainButtonsStates} />
+                        <HeaderButtonAbout setState={setMainButtonsStates} />
                     </Container>
                 </MediaQuery>
 
                 <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
                     <Container style={{ marginRight: 0 }}>
-                        <Button>
-                            <Text>Вход</Text>
-                        </Button>
+                        <HeaderButtonSingIn setState={setMainButtonsStates} />
                     </Container>
                 </MediaQuery>
             </div>
