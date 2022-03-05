@@ -1,3 +1,5 @@
+import React from 'react';
+
 import ModalWindow from "../ModalWindow/ModalWindow";
 import MyNavbar from "../Header/MyNavbar";
 import { CSSTransition } from "react-transition-group";

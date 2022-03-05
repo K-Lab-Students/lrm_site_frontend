@@ -7,7 +7,7 @@ const MyButton = ({ text, setState, buttonId, styles = {}, subtle = true }) => {
         <Button
             variant={subtle ? 'subtle' : 'filled'}
             styles={styles}
-            onClick={setState(buttonId)}
+            onClick={() => setState(buttonId)}
         >
             <Text>{text}</Text>
         </Button>
@@ -15,7 +15,7 @@ const MyButton = ({ text, setState, buttonId, styles = {}, subtle = true }) => {
 }
 
 const HeaderButtonNews = ({ setState, style = {} }) => {
-    const buttonId = 1
+    const buttonId = 'news'
     return (
         <MyButton
             buttonId={buttonId}
@@ -27,7 +27,7 @@ const HeaderButtonNews = ({ setState, style = {} }) => {
 }
 
 const HeaderButtonCompetentions = ({ setState, style = {} }) => {
-    const buttonId = 2
+    const buttonId = 'competitions'
     return (
         <MyButton
             buttonId={buttonId}
@@ -39,7 +39,7 @@ const HeaderButtonCompetentions = ({ setState, style = {} }) => {
 }
 
 const HeaderButtonAbout = ({ setState, style = {} }) => {
-    const buttonId = 3
+    const buttonId = 'about'
     return (
         <MyButton
             buttonId={buttonId}
@@ -51,7 +51,7 @@ const HeaderButtonAbout = ({ setState, style = {} }) => {
 }
 
 const HeaderButtonSingIn = ({ setState, style = {} }) => {
-    const buttonId = 4
+    const buttonId = 'singin'
     return (
         <MyButton
             buttonId={buttonId}

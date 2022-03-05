@@ -6,12 +6,39 @@ import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 import styles from './MainBodyStyle.module.css'
 
-const MainBody = () => {
+const MainBody = ({ mainButtonsStates }) => {
+
+    const pages = (mainButtonsStates) => {
+        switch (mainButtonsStates) {
+            case 'news':
+                return (
+                    <>
+                        <ScrollToTop />
+                        <PostsGrid />
+                        <Footer />
+                    </>
+                )
+            case 'competitions':
+                return (
+                    <div>competitions</div>
+                )
+            case 'about':
+                return (
+                    <div>about</div>
+                )
+            case 'singin':
+                return (
+                    <div>singin</div>
+                )
+            default:
+                return (<></>)
+
+        }
+    }
+
     return (
         <div className={styles.mainBody}>
-            <ScrollToTop/>
-            <PostsGrid />
-            <Footer />
+            {pages(mainButtonsStates)}
         </div>
     )
 }

@@ -1,4 +1,6 @@
-import { Navbar, MediaQuery, Button, Text, Divider } from '@mantine/core';
+import React from 'react';
+
+import { Navbar, MediaQuery, Divider } from '@mantine/core';
 
 import { HeaderButtonNews, HeaderButtonCompetentions, HeaderButtonAbout, HeaderButtonSingIn } from '../HeaderButtons/HeaderButtons';
 

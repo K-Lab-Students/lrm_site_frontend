@@ -9,7 +9,7 @@ import MainBody from './components/MainBody/MainBody';
 const App = () => {
 
     const [openedMenu, setOpenedMenu] = useState(false);
-    const [mainButtonsStates, setMainButtonsStates] = useState(0);
+    const [mainButtonsStates, setMainButtonsStates] = useState('news');
 
     return (
         <AppShell
@@ -22,7 +22,7 @@ const App = () => {
         >
             <LeftMenu openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} setMainButtonsStates={setMainButtonsStates}/>
 
-            <MainBody />
+            <MainBody mainButtonsStates={mainButtonsStates}/>
 
         </AppShell>
     );
