@@ -15,8 +15,9 @@ const App = () => {
             navbarOffsetBreakpoint="sm"
             fixed
             header={
-                <MyHeader setOpenedMenu={setOpenedMenu} />
+                <MyHeader openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} />
             }
+            styles={{ main: { padding: 0 }, body: { padding: 0 } }}
         >
             <LeftMenu openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} />
 

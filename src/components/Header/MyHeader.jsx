@@ -1,11 +1,13 @@
 import { Header, MediaQuery, Burger, Button, useMantineTheme, ActionIcon, Container, Text } from '@mantine/core';
 
-const MyHeader = ({ setOpenedMenu }) => {
+const MyHeader = ({ openedMenu, setOpenedMenu }) => {
 
     const theme = useMantineTheme()
 
+    const stickyHeader = openedMenu ? {} : {position: 'sticky'}
+
     return (
-        <Header height={70} padding="md">
+        <Header height={70} padding="md" style={stickyHeader}>
             <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
                 <Container size='sm' style={{ paddingLeft: 70, marginRight: 0, marginLeft: 0 }}>
                     <ActionIcon>

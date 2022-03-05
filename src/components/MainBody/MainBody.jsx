@@ -1,28 +1,16 @@
 import React from "react";
 
-import { Grid, Container } from "@mantine/core";
+import { Grid, Container, MediaQuery } from "@mantine/core";
+import Post from "../Post/Post";
+import PostsGrid from "../Post/PostsGrid";
+
+import styles from './MainBodyStyle.module.css'
 
 const MainBody = () => {
     return (
-        <Grid gutter={40}>
-            <Grid.Col span={4}>
-                <Container>
-                    abc
-                </Container>
-            </Grid.Col>
-
-            <Grid.Col span={4}>
-                <Container>
-                    abc
-                </Container>
-            </Grid.Col>
-
-            <Grid.Col span={4}>
-                <Container>
-                    abc
-                </Container>
-            </Grid.Col>
-        </Grid>
+        <div className={styles.mainBody}>
+            <PostsGrid />
+        </div>
     )
 }
 

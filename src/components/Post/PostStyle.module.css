@@ -1,0 +1,10 @@
+.post {
+    margin: 10px;
+    margin-top: 0;
+    padding: 10px;
+    padding-top: 20px;
+    /* display: contents;    */
+    background: white;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
