@@ -3,6 +3,7 @@ import React from "react";
 import PostsGrid from "../PosGrid/PostsGrid";
 import Footer from "../Footer/Footer";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
+import AboutPageGrid from "../AboutPageGrid/AboutPageGrid";
 
 import styles from './MainBodyStyle.module.css'
 
@@ -24,7 +25,7 @@ const MainBody = ({ mainButtonsStates }) => {
                 )
             case 'about':
                 return (
-                    <div>about</div>
+                    <AboutPageGrid width={contentWidth} />
                 )
             case 'singin':
                 return (
