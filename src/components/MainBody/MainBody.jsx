@@ -8,14 +8,14 @@ import styles from './MainBodyStyle.module.css'
 
 const MainBody = ({ mainButtonsStates }) => {
 
+    const contentWidth = 1000
+
     const pages = (mainButtonsStates) => {
         switch (mainButtonsStates) {
             case 'news':
                 return (
                     <>
-                        <ScrollToTop />
-                        <PostsGrid />
-                        <Footer />
+                        <PostsGrid width={contentWidth} />
                     </>
                 )
             case 'competitions':
@@ -38,7 +38,9 @@ const MainBody = ({ mainButtonsStates }) => {
 
     return (
         <div className={styles.mainBody}>
+            <ScrollToTop />
             {pages(mainButtonsStates)}
+            <Footer />
         </div>
     )
 }

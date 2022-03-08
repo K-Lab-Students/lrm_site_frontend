@@ -5,9 +5,7 @@ import Post from '../Post/Post'
 
 import styles from './PostGridStyle.module.css'
 
-const PostsGrid = () => {
-
-    const postsBlogWidth = 1000
+const PostsGrid = ({ width }) => {
 
     const [posts, setPosts] = useState([
         { id: Date.now() - 500, title: 'Wow', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non felis sed metus volutpat feugiat accumsan at tortor. Nunc sed magna id sapien ultrices imperdiet eget sit amet urna. Donec et feugiat metus. Aliquam ac ex id nibh fermentum imperdiet vel in lacus. Integer vitae odio pharetra, suscipit eros at, venenatis leo. Donec laoreet diam vel tincidunt dapibus. Aenean vel cursus est. Pellentesque ac consequat sapien. Nulla facilisi. Vestibulum sit amet quam ut ex sollicitudin vestibulum. Nulla imperdiet odio posuere nulla tincidunt, accumsan scelerisque magna congue. Etiam molestie tincidunt orci, at feugiat odio elementum vel. Integer cursus urna in orci rhoncus efficitur quis id metus. Fusce aliquam magna sed nunc posuere pretium. Nulla pellentesque ut tellus eu ullamcorper. Nullam nec leo a dui imperdiet tincidunt' },
@@ -22,8 +20,8 @@ const PostsGrid = () => {
     ])
 
     return (
-        <MediaQuery smallerThan={postsBlogWidth + 40} styles={{ width: 'auto !important' }}>
-            <div className={styles.postGrid} style={{ width: postsBlogWidth }}>
+        <MediaQuery smallerThan={width + 40} styles={{ width: 'auto !important' }}>
+            <div className={styles.postGrid} style={{ width: width }}>
                 {posts.map(post =>
                     <Post postData={post} key={post.id} />
                 )}
