@@ -10,9 +10,9 @@ import styles from './PersonCardStyle.module.css'
 const PersonCard = () => {
 
     return (
-        <div style={{margin: '10px'}}>
+        <div>
             <Card className={styles.personCard} shadow="sm" padding="lg" withBorder>
-                <div className={styles.userAvatarDiv} style={{ border: '1px solid black' }}>
+                <div className={styles.userAvatarDiv}>
                     <center>
                         <img src={emptyAvatar} className={styles.userAvatar} alt='user-avatar' />
                     </center>
