@@ -10,14 +10,14 @@ const ScrollToTop = () => {
     return (
         <div>
             <Affix position={{ left: 20, top: 400}}>
-                <Transition transition="slide-up" mounted={scroll.y > 0}>
+                <Transition transition="slide-up" mounted={scroll.y > 400}>
                     {(transitionStyles) => (
                         <Button
                             // leftIcon={<ArrowUpIcon />}
                             // style={transitionStyles}
                             onClick={() => scrollTo({ y: 0 })}
                         >
-                            Scroll to top
+                            Наверх
                         </Button>
                     )}
                 </Transition>

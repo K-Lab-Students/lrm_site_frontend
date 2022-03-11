@@ -1,37 +1,42 @@
 import React from 'react'
 
-import { MediaQuery, Grid } from '@mantine/core'
-
-import styles from './AboutPageGridStyle.module.css'
+import { Grid, MantineProvider } from '@mantine/core'
 
 import PersonCard from './PersonCard'
+import Body from '../Body/Body'
 
 const AboutPageGrid = ({ width }) => {
     return (
-        <MediaQuery smallerThan={width + 40} styles={{ width: 'auto !important' }}>
-            <div className={styles.aboutPageGrid} style={{ width: width }}>
-                <Grid columns={12}>
-                    <Grid.Col xs={5} sm={4} md={3} style={{margin: 'auto'}}>
+        <MantineProvider
+            theme={{
+                breakpoints: {
+                    xs: 500
+                }
+            }}
+        >
+            <Body width={width}>
+                <Grid columns={12} style={{ zIndex: 0 }}>
+                    <Grid.Col xs={5} sm={4} md={3} style={{ margin: 'auto' }}>
                         <PersonCard />
                     </Grid.Col>
-                    <Grid.Col xs={5} sm={4} md={3} style={{margin: 'auto'}}>
+                    <Grid.Col xs={5} sm={4} md={3} style={{ margin: 'auto' }}>
                         <PersonCard />
                     </Grid.Col>
-                    <Grid.Col xs={5} sm={4} md={3} style={{margin: 'auto'}}>
+                    <Grid.Col xs={5} sm={4} md={3} style={{ margin: 'auto' }}>
                         <PersonCard />
                     </Grid.Col>
-                    <Grid.Col xs={5} sm={4} md={3} style={{margin: 'auto'}}>
+                    <Grid.Col xs={5} sm={4} md={3} style={{ margin: 'auto' }}>
                         <PersonCard />
                     </Grid.Col>
-                    <Grid.Col xs={5} sm={4} md={3} style={{margin: 'auto'}}>
+                    <Grid.Col xs={5} sm={4} md={3} style={{ margin: 'auto' }}>
                         <PersonCard />
                     </Grid.Col>
-                    <Grid.Col xs={5} sm={4} md={3} style={{margin: 'auto'}}>
+                    <Grid.Col xs={5} sm={4} md={3} style={{ margin: 'auto' }}>
                         <PersonCard />
                     </Grid.Col>
                 </Grid>
-            </div>
-        </MediaQuery>
+            </Body>
+        </MantineProvider>
     )
 }
 

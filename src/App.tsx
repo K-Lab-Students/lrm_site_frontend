@@ -1,30 +1,25 @@
 import React, { useState } from 'react';
 
-import { AppShell } from '@mantine/core';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import MyHeader from './components/Header/MyHeader';
 import LeftMenu from './components/LeftMenu/LeftMenu';
-import MainBody from './components/MainBody/MainBody';
+import PageBody from './components/MainBody/MainBody';
+
+import axios from 'axios'
 
 const App = () => {
 
     const [openedMenu, setOpenedMenu] = useState(false);
-    const [mainButtonsStates, setMainButtonsStates] = useState('news');
 
     return (
-        <AppShell
-            navbarOffsetBreakpoint="sm"
-            fixed
-            header={
-                <MyHeader setMainButtonsStates={setMainButtonsStates} openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} />
-            }
-            styles={{ main: { padding: 0 }, body: { padding: 0 } }}
-        >
-            <LeftMenu openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} setMainButtonsStates={setMainButtonsStates}/>
+        <Router>
+            <MyHeader openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} />
 
-            <MainBody mainButtonsStates={mainButtonsStates}/>
+            <LeftMenu openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} />
 
-        </AppShell>
+            <PageBody />
+        </Router>
     );
 }
 

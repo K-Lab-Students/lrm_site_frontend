@@ -1,8 +1,9 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
 import { Navbar, MediaQuery, Divider } from '@mantine/core';
 
-import { HeaderButtonNews, HeaderButtonCompetentions, HeaderButtonAbout, HeaderButtonSingIn } from '../HeaderButtons/HeaderButtons';
+import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn } from '../HeaderButtons/HeaderButtons';
 
 const MyNavbar = ({ openedNavbar, setMainButtonsStates }) => {
 
@@ -10,21 +11,21 @@ const MyNavbar = ({ openedNavbar, setMainButtonsStates }) => {
         <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
             <Navbar padding="md" hidden={!openedNavbar}>
                 <Navbar.Section>
-                    <HeaderButtonNews style={{ marginTop: 10 }} setState={setMainButtonsStates} />
+                    <Link to='/news' children={<ButtonNews style={{ marginTop: 10 }} setState={setMainButtonsStates} />} />
                 </Navbar.Section>
 
                 <Navbar.Section>
-                    <HeaderButtonCompetentions setState={setMainButtonsStates} />
+                    <Link to='/competitions' children={<ButtonCompetentions setState={setMainButtonsStates} />} />
                 </Navbar.Section>
 
                 <Navbar.Section>
-                    <HeaderButtonAbout setState={setMainButtonsStates} />
+                    <Link to='/about' children={<ButtonAbout setState={setMainButtonsStates} />} />
                 </Navbar.Section>
 
                 <Divider />
 
                 <Navbar.Section style={{ marginTop: 10 }}>
-                    <HeaderButtonSingIn setState={setMainButtonsStates} />
+                    <Link to='/sing-in' children={<ButtonSingIn setState={setMainButtonsStates} />} />
                 </Navbar.Section>
             </Navbar>
         </MediaQuery>

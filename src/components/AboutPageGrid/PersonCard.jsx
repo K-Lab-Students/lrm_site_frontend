@@ -1,9 +1,7 @@
 import React from 'react'
 
-import { Card, Image, Text, Badge, Button, Group } from '@mantine/core'
+import { Card, Image, Text, Badge, Button, Group, Avatar } from '@mantine/core'
 import { Container } from '@mantine/core'
-
-import emptyAvatar from './emptyAvatar.png'
 
 import styles from './PersonCardStyle.module.css'
 
@@ -14,7 +12,7 @@ const PersonCard = () => {
             <Card className={styles.personCard} shadow="sm" padding="lg" withBorder>
                 <div className={styles.userAvatarDiv}>
                     <center>
-                        <img src={emptyAvatar} className={styles.userAvatar} alt='user-avatar' />
+                        <Avatar size={150} radius='xs' alt='user-avatar'>U-M</Avatar>
                     </center>
                 </div>
                 <Text>

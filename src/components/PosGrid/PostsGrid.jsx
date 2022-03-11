@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 
-import { MediaQuery } from '@mantine/core'
 import Post from '../Post/Post'
-
-import styles from './PostGridStyle.module.css'
+import Body from '../Body/Body'
 
 const PostsGrid = ({ width }) => {
 
@@ -20,13 +18,11 @@ const PostsGrid = ({ width }) => {
     ])
 
     return (
-        <MediaQuery smallerThan={width + 40} styles={{ width: 'auto !important' }}>
-            <div className={styles.postGrid} style={{ width: width }}>
-                {posts.map(post =>
-                    <Post postData={post} key={post.id} />
-                )}
-            </div>
-        </MediaQuery>
+        <Body width={width}>
+            {posts.map(post =>
+                <Post postData={post} key={post.id} />
+            )}
+        </Body>
     )
 }
 

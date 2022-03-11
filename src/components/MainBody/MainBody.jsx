@@ -1,49 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { Modal } from "@mantine/core";
+
+import { Switch, Route } from "react-router-dom";
 
 import PostsGrid from "../PosGrid/PostsGrid";
 import Footer from "../Footer/Footer";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import AboutPageGrid from "../AboutPageGrid/AboutPageGrid";
+import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
 
 import styles from './MainBodyStyle.module.css'
 
-const MainBody = ({ mainButtonsStates }) => {
+const PageBody = () => {
 
     const contentWidth = 1000
-
-    const pages = (mainButtonsStates) => {
-        switch (mainButtonsStates) {
-            case 'news':
-                return (
-                    <>
-                        <PostsGrid width={contentWidth} />
-                    </>
-                )
-            case 'competitions':
-                return (
-                    <div>competitions</div>
-                )
-            case 'about':
-                return (
-                    <AboutPageGrid width={contentWidth} />
-                )
-            case 'singin':
-                return (
-                    <div>singin</div>
-                )
-            default:
-                return (<></>)
-
-        }
-    }
 
     return (
         <div className={styles.mainBody}>
             <ScrollToTop />
-            {pages(mainButtonsStates)}
+            <Switch>
+                <Route exact path='/news'>
+                    <PostsGrid width={contentWidth} />
+                </Route>
+                <Route path='/competitions'>
+                    <div>competitions</div>
+                </Route>
+                <Route path='/about'>
+                    <AboutPageGrid width={contentWidth} />
+                </Route>
+                <Route path='/sing-in'>
+                    <AuthenticationForm width={contentWidth} />
+                </Route>
+                <Route path="*">
+                    <center>
+                        <div>
+                            No! God, please, NO!!! 404, NOOOOOOOOOOOOOOOOOOOOOOOO!
+                            <img src='https://i.imgflip.com/2hcl0v.jpg' alt='no' />
+                        </div>
+                    </center>
+                </Route>
+            </Switch>
             <Footer />
         </div>
     )
 }
 
-export default MainBody
+export default PageBody

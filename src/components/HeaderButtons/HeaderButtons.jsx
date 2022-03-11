@@ -14,7 +14,7 @@ const MyButton = ({ text, setState, buttonId, styles = {}, subtle = true }) => {
     )
 }
 
-const HeaderButtonNews = ({ setState, style = {} }) => {
+const ButtonNews = ({ setState, style = {} }) => {
     const buttonId = 'news'
     return (
         <MyButton
@@ -26,7 +26,7 @@ const HeaderButtonNews = ({ setState, style = {} }) => {
     )
 }
 
-const HeaderButtonCompetentions = ({ setState, style = {} }) => {
+const ButtonCompetentions = ({ setState, style = {} }) => {
     const buttonId = 'competitions'
     return (
         <MyButton
@@ -38,7 +38,7 @@ const HeaderButtonCompetentions = ({ setState, style = {} }) => {
     )
 }
 
-const HeaderButtonAbout = ({ setState, style = {} }) => {
+const ButtonAbout = ({ setState, style = {} }) => {
     const buttonId = 'about'
     return (
         <MyButton
@@ -50,7 +50,7 @@ const HeaderButtonAbout = ({ setState, style = {} }) => {
     )
 }
 
-const HeaderButtonSingIn = ({ setState, style = {} }) => {
+const ButtonSingIn = ({ setState, style = {} }) => {
     const buttonId = 'singin'
     return (
         <MyButton
@@ -64,8 +64,8 @@ const HeaderButtonSingIn = ({ setState, style = {} }) => {
 }
 
 export {
-    HeaderButtonNews,
-    HeaderButtonCompetentions,
-    HeaderButtonAbout,
-    HeaderButtonSingIn
+    ButtonNews,
+    ButtonCompetentions,
+    ButtonAbout,
+    ButtonSingIn
 }
