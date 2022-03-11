@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import MyHeader from './components/Header/MyHeader';
 import LeftMenu from './components/LeftMenu/LeftMenu';
-import PageBody from './components/MainBody/MainBody';
+import PageBody from './components/PageBody/PageBody';
 
 import axios from 'axios'
 

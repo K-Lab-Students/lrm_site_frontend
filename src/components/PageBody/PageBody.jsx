@@ -10,14 +10,14 @@ import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import AboutPageGrid from "../AboutPageGrid/AboutPageGrid";
 import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
 
-import styles from './MainBodyStyle.module.css'
+import styles from './PageBodyStyle.module.css'
 
 const PageBody = () => {
 
     const contentWidth = 1000
 
     return (
-        <div className={styles.mainBody}>
+        <div className={styles.pageBody}>
             <ScrollToTop />
             <Switch>
                 <Route exact path='/news'>
