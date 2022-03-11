@@ -1,9 +1,18 @@
-.authenticationForm {
+.authContainer {
+    width: 400px;
+    height: 400px;
+    vertical-align: middle;
     margin: auto;
-    margin-top: 0;
-    padding: 10px;
-    padding-top: 20px;
-    justify-content: center;
-    background: white;
-    height: auto;
+    border: 1px solid grey;
+    border-radius: 10px;
 }
+
+.authDiv {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    vertical-align: middle;
+    flex-direction: column;
+    margin: 50px;
+}
+
