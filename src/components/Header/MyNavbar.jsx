@@ -1,36 +1,31 @@
 import React from 'react';
-import { useState } from 'react';
-import { Navbar, MediaQuery, Button, Text, Divider } from '@mantine/core';
 
-const MyNavbar = ({ openedNavbar }) => {
+import { Link } from 'react-router-dom';
+import { Navbar, MediaQuery, Divider } from '@mantine/core';
+
+import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn } from '../HeaderButtons/HeaderButtons';
+
+const MyNavbar = ({ openedNavbar, setMainButtonsStates }) => {
 
     return (
         <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-            <Navbar padding="md" hidden={!openedNavbar} width={{}}>
+            <Navbar padding="md" hidden={!openedNavbar}>
                 <Navbar.Section>
-                    <Button variant='subtle'>
-                        <Text>Новости</Text>
-                    </Button>
+                    <Link to='/news' children={<ButtonNews style={{ marginTop: 10 }} setState={setMainButtonsStates} />} />
                 </Navbar.Section>
 
                 <Navbar.Section>
-                    <Button variant='subtle'>
-                        <Text>Компетенции</Text>
-                    </Button>
+                    <Link to='/competitions' children={<ButtonCompetentions setState={setMainButtonsStates} />} />
                 </Navbar.Section>
 
                 <Navbar.Section>
-                    <Button variant='subtle'>
-                        <Text>О нас</Text>
-                    </Button>
+                    <Link to='/about' children={<ButtonAbout setState={setMainButtonsStates} />} />
                 </Navbar.Section>
 
                 <Divider />
 
                 <Navbar.Section style={{ marginTop: 10 }}>
-                    <Button>
-                        <Text>Вход</Text>
-                    </Button>
+                    <Link to='/sign-in' children={<ButtonSingIn setState={setMainButtonsStates} />} />
                 </Navbar.Section>
             </Navbar>
         </MediaQuery>

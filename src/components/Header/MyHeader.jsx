@@ -1,24 +1,42 @@
 import React from 'react';
-import { useState } from 'react';
-import { Header, MediaQuery, Burger, Button, useMantineTheme, ActionIcon, Container, Text } from '@mantine/core';
 
-const MyHeader = ({ setOpenedMenu }) => {
+import { Header, MediaQuery, Burger, useMantineTheme, ActionIcon, Container, Text } from '@mantine/core';
+
+import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn } from '../HeaderButtons/HeaderButtons'
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+const MyHeader = ({ openedMenu, setOpenedMenu }) => {
 
     const theme = useMantineTheme()
 
-    const burgerClicked = () => {
-
-    }
+    const stickyHeader = openedMenu ? {} : { position: 'sticky' }
 
     return (
-        <Header height={70} padding="md">
+        <Header height={70} padding="md" style={stickyHeader}>
             <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
-                <Container size='sm' style={{ paddingLeft: 70, marginRight: 0, marginLeft: 0 }}>
-                    <ActionIcon>
-                        <img src="https://img.icons8.com/office/30/000000/brain.png" />
-                    </ActionIcon>
-                    <Text>K-Lab</Text>
-                </Container>
+                <MediaQuery smallerThan="sm" styles={{ paddingLeft: '10px !important' }}>
+                    <Container size='sm' style={{ paddingLeft: 70, marginRight: 0, marginLeft: 0 }}>
+                        {/* <ActionIcon> */}
+                        <img src="https://img.icons8.com/office/30/000000/brain.png" alt='k-lab logo' />
+                        {/* </ActionIcon> */}
+                        <Text>K-Lab</Text>
+                    </Container>
+                </MediaQuery>
+
+                <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+                    <Container style={{ margin: 'auto' }}>
+                        <Link to='/news' children={<ButtonNews />} />
+                        <Link to='/competitions' children={<ButtonCompetentions />} />
+                        <Link to='/about' children={<ButtonAbout />} />
+                    </Container>
+                </MediaQuery>
+
+                <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+                    <Container style={{ marginRight: 0, width: 'auto', marginLeft: 0 }}>
+                        <Link to='/sign-in' children={<ButtonSingIn />} />
+                    </Container>
+                </MediaQuery>
 
                 <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
                     <Burger
@@ -26,31 +44,10 @@ const MyHeader = ({ setOpenedMenu }) => {
                         size="sm"
                         color={theme.colors.gray[6]}
                         mr="xl"
-                        style={{ marginLeft: 50 }}
+                        style={{ marginLeft: 'auto', marginRight: 0 }}
                     />
                 </MediaQuery>
 
-                <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-                    <Container>
-                        <Button variant='subtle'>
-                            <Text>Новости</Text>
-                        </Button>
-                        <Button variant='subtle'>
-                            <Text>Компетенции</Text>
-                        </Button>
-                        <Button variant='subtle'>
-                            <Text>О нас</Text>
-                        </Button>
-                    </Container>
-                </MediaQuery>
-
-                <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-                    <Container style={{ marginRight: 0 }}>
-                        <Button>
-                            <Text>Вход</Text>
-                        </Button>
-                    </Container>
-                </MediaQuery>
             </div>
         </Header>
     )

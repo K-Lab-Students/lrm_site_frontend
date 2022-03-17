@@ -1,8 +1,7 @@
-import React from "react";
+import React from 'react';
 
 import ModalWindow from "../ModalWindow/ModalWindow";
 import MyNavbar from "../Header/MyNavbar";
-import { MediaQuery } from "@mantine/core";
 import { CSSTransition } from "react-transition-group";
 
 import './LeftMenuAnimation.css'
