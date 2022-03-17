@@ -25,7 +25,7 @@ const MyNavbar = ({ openedNavbar, setMainButtonsStates }) => {
                 <Divider />
 
                 <Navbar.Section style={{ marginTop: 10 }}>
-                    <Link to='/sing-in' children={<ButtonSingIn setState={setMainButtonsStates} />} />
+                    <Link to='/sign-in' children={<ButtonSingIn setState={setMainButtonsStates} />} />
                 </Navbar.Section>
             </Navbar>
         </MediaQuery>

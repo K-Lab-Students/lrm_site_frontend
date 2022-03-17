@@ -34,7 +34,7 @@ const MyHeader = ({ openedMenu, setOpenedMenu }) => {
 
                 <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
                     <Container style={{ marginRight: 0, width: 'auto', marginLeft: 0 }}>
-                        <Link to='/sing-in' children={<ButtonSingIn />} />
+                        <Link to='/sign-in' children={<ButtonSingIn />} />
                     </Container>
                 </MediaQuery>
 

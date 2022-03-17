@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import AboutPageGrid from "../AboutPageGrid/AboutPageGrid";
 import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
+import UserProfile from "../../UserProfile/UserProfile";
 
 import styles from './PageBodyStyle.module.css'
 
@@ -29,8 +30,11 @@ const PageBody = () => {
                 <Route path='/about'>
                     <AboutPageGrid width={contentWidth} />
                 </Route>
-                <Route path='/sing-in'>
+                <Route path='/sign-in'>
                     <AuthenticationForm width={contentWidth} />
+                </Route>
+                <Route path='/lk'>
+                    <UserProfile width={contentWidth} />
                 </Route>
                 <Route path="*">
                     <center>

@@ -1,15 +1,19 @@
 import React from 'react'
 
-import { Container, Text, Divider } from '@mantine/core'
+import { Container, Text, Divider, Group, Badge } from '@mantine/core'
 
 import styles from './PostStyle.module.css'
 
 const Post = ({ postData }) => {
     return (
         <Container className={styles.post}>
-            <Text size='xl'>{postData.title}</Text>
+            <Group >
+                <Text size='xl'>{postData.title}</Text>
+                {/* {postData.userId.map(tagName => <Badge color='pink'>{tagName}</Badge>)} */}
+                
+            </Group>
             <Divider />
-            <Text>{postData.content}</Text>
+            <Text>{postData.body}</Text>
         </Container>
     )
 }
