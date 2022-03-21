@@ -5,6 +5,9 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 
 import Body from '../components/Body/Body'
 import UserProfileMenu from './UserProfileMenu'
+import UserProfileSettings from './UserProfileSettings'
+import UserProfileProjects from './UserProfileProjects'
+import UserProfilePosts from './UserProfilePosts'
 
 const UserProfile = ({ width }) => {
     return (
@@ -16,28 +19,20 @@ const UserProfile = ({ width }) => {
                 </Group>
             </Container>
             <Grid align='flex-start' style={{ marginTop: 20 }}>
-                <Grid.Col span={4}>
+                <Grid.Col span={3}>
                     <UserProfileMenu />
                 </Grid.Col>
                 <Grid.Col span={8}>
                     <Group direction="column">
                         <Switch>
                             <Route path='/lk/settings'>
-                                <h3 style={{margin: 0}}>Настройки</h3>
-                                Фамилия
-                                <TextInput style={{width: 500}}></TextInput>
-                                Имя
-                                <TextInput style={{width: 500}}></TextInput>
-                                Отчество
-                                <TextInput style={{width: 500}}></TextInput>
-                                Дата рождения
-                                <TextInput style={{width: 500}}></TextInput>
+                                <UserProfileSettings />
                             </Route>
                             <Route path='/lk/my-projects'>
-                                <Text>my-projects</Text>
+                                <UserProfileProjects />
                             </Route>
                             <Route path='/lk/my-posts'>
-                                <Text>my-posts</Text>
+                                <UserProfilePosts />
                             </Route>
                         </Switch>
                     </Group>

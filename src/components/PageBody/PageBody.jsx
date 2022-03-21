@@ -4,6 +4,7 @@ import { Modal } from "@mantine/core";
 
 import { Switch, Route } from "react-router-dom";
 
+import Home from "../Home/Home";
 import PostsGrid from "../PosGrid/PostsGrid";
 import Footer from "../Footer/Footer";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
@@ -21,11 +22,17 @@ const PageBody = () => {
         <div className={styles.pageBody}>
             <ScrollToTop />
             <Switch>
+                <Route exact path='/'>
+                    <Home width={contentWidth} />
+                </Route>
                 <Route exact path='/news'>
                     <PostsGrid width={contentWidth} />
                 </Route>
                 <Route path='/competitions'>
                     <div>competitions</div>
+                </Route>
+                <Route path='/projects'>
+                    <div>projects</div>
                 </Route>
                 <Route path='/about'>
                     <AboutPageGrid width={contentWidth} />

@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, MediaQuery, Divider } from '@mantine/core';
 
-import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn } from '../HeaderButtons/HeaderButtons';
+import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn, ButtonProjects } from '../HeaderButtons/HeaderButtons';
 
 const MyNavbar = ({ openedNavbar, setMainButtonsStates }) => {
 
@@ -16,6 +16,10 @@ const MyNavbar = ({ openedNavbar, setMainButtonsStates }) => {
 
                 <Navbar.Section>
                     <Link to='/competitions' children={<ButtonCompetentions setState={setMainButtonsStates} />} />
+                </Navbar.Section>
+
+                <Navbar.Section>
+                    <Link to='/projects' children={<ButtonProjects setState={setMainButtonsStates} />} />
                 </Navbar.Section>
 
                 <Navbar.Section>

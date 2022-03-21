@@ -1,10 +1,12 @@
 import React from 'react';
 
-import { Header, MediaQuery, Burger, useMantineTheme, ActionIcon, Container, Text } from '@mantine/core';
+import { Header, MediaQuery, Burger, useMantineTheme, ActionIcon, Container, Text, Image } from '@mantine/core';
 
-import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn } from '../HeaderButtons/HeaderButtons'
+import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn, ButtonProjects } from '../HeaderButtons/HeaderButtons'
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import logoBlack from '../../pics/logoBlack.png'
 
 const MyHeader = ({ openedMenu, setOpenedMenu }) => {
 
@@ -17,10 +19,9 @@ const MyHeader = ({ openedMenu, setOpenedMenu }) => {
             <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
                 <MediaQuery smallerThan="sm" styles={{ paddingLeft: '10px !important' }}>
                     <Container size='sm' style={{ paddingLeft: 70, marginRight: 0, marginLeft: 0 }}>
-                        {/* <ActionIcon> */}
-                        <img src="https://img.icons8.com/office/30/000000/brain.png" alt='k-lab logo' />
-                        {/* </ActionIcon> */}
-                        <Text>K-Lab</Text>
+                        <Link to='/' children={
+                            <Image src={logoBlack} width={39} height={60} fit="contain" alt='k-lab logo' />
+                        } />
                     </Container>
                 </MediaQuery>
 
@@ -28,6 +29,7 @@ const MyHeader = ({ openedMenu, setOpenedMenu }) => {
                     <Container style={{ margin: 'auto' }}>
                         <Link to='/news' children={<ButtonNews />} />
                         <Link to='/competitions' children={<ButtonCompetentions />} />
+                        <Link to='/projects' children={<ButtonProjects />} />
                         <Link to='/about' children={<ButtonAbout />} />
                     </Container>
                 </MediaQuery>

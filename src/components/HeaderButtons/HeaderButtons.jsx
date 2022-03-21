@@ -26,6 +26,18 @@ const ButtonNews = ({ setState, style = {} }) => {
     )
 }
 
+const ButtonProjects = ({ setState, style = {} }) => {
+    const buttonId = 'projects'
+    return (
+        <MyButton
+            buttonId={buttonId}
+            setState={setState}
+            styles={style}
+            text='Проекты'
+        />
+    )
+}
+
 const ButtonCompetentions = ({ setState, style = {} }) => {
     const buttonId = 'competitions'
     return (
@@ -66,6 +78,7 @@ const ButtonSingIn = ({ setState, style = {} }) => {
 export {
     ButtonNews,
     ButtonCompetentions,
+    ButtonProjects,
     ButtonAbout,
     ButtonSingIn
 }
