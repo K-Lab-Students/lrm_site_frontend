@@ -25,7 +25,7 @@ const UserProfile = ({ width }) => {
                 <Grid.Col span={8}>
                     <Group direction="column">
                         <Switch>
-                            <Route path='/lk/settings'>
+                            <Route exact path='/lk/settings'>
                                 <UserProfileSettings />
                             </Route>
                             <Route path='/lk/my-projects'>
@@ -33,6 +33,9 @@ const UserProfile = ({ width }) => {
                             </Route>
                             <Route path='/lk/my-posts'>
                                 <UserProfilePosts />
+                            </Route>
+                            <Route path='*'>
+                                Тут ничего нет((((((((((
                             </Route>
                         </Switch>
                     </Group>

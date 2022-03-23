@@ -6,11 +6,13 @@ import { Switch, Route } from "react-router-dom";
 
 import Home from "../Home/Home";
 import PostsGrid from "../PosGrid/PostsGrid";
+import ProjectsPageGrid from "../ProjectsPageGrid/ProjectsPageGrid";
 import Footer from "../Footer/Footer";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import AboutPageGrid from "../AboutPageGrid/AboutPageGrid";
 import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
 import UserProfile from "../../UserProfile/UserProfile";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 import styles from './PageBodyStyle.module.css'
 
@@ -25,14 +27,14 @@ const PageBody = () => {
                 <Route exact path='/'>
                     <Home width={contentWidth} />
                 </Route>
-                <Route exact path='/news'>
+                <Route path='/news'>
                     <PostsGrid width={contentWidth} />
                 </Route>
                 <Route path='/competitions'>
                     <div>competitions</div>
                 </Route>
                 <Route path='/projects'>
-                    <div>projects</div>
+                    <ProjectsPageGrid width={contentWidth} />
                 </Route>
                 <Route path='/about'>
                     <AboutPageGrid width={contentWidth} />
@@ -44,12 +46,7 @@ const PageBody = () => {
                     <UserProfile width={contentWidth} />
                 </Route>
                 <Route path="*">
-                    <center>
-                        <div>
-                            No! God, please, NO!!! 404, NOOOOOOOOOOOOOOOOOOOOOOOO!
-                            <img src='https://i.imgflip.com/2hcl0v.jpg' alt='no' />
-                        </div>
-                    </center>
+                    <NotFoundPage width={contentWidth} />
                 </Route>
             </Switch>
             <Footer />
