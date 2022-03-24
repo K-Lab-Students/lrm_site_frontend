@@ -11,7 +11,7 @@ import Footer from "../Footer/Footer";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import AboutPageGrid from "../AboutPageGrid/AboutPageGrid";
 import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
-import UserProfile from "../../UserProfile/UserProfile";
+import UserProfile from "../UserProfile/UserProfile";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 import styles from './PageBodyStyle.module.css'

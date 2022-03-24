@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { Container, Avatar, Text, Group, Button, TextInput, Grid } from '@mantine/core'
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import { Container, Avatar, Group,  Grid } from '@mantine/core'
+import { Route, Switch} from 'react-router-dom'
 
-import Body from '../components/Body/Body'
+import Body from '../Body/Body'
 import UserProfileMenu from './UserProfileMenu'
 import UserProfileSettings from './UserProfileSettings'
 import UserProfileProjects from './UserProfileProjects'

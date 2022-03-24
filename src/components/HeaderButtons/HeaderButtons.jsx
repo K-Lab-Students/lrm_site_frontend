@@ -7,7 +7,7 @@ const MyButton = ({ text, setState, buttonId, styles = {}, subtle = true }) => {
         <Button
             variant={subtle ? 'subtle' : 'filled'}
             styles={styles}
-            onClick={() => setState(buttonId)}
+            // onClick={() => setState(buttonId)}
         >
             <Text>{text}</Text>
         </Button>
