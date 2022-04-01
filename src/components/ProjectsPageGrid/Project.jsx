@@ -9,20 +9,20 @@ const Project = ({ imageLeftPos, project }) => {
                 {imageLeftPos
                     ? <>
                         <Container>
-                            <img src={project.photoUrls[0].url} width={500} alt='project' />
+                            {/* <img src={project.photoUrls[0].url} width={500} alt='project' /> */}
                         </Container>
                         <Container>
                             <Text>{project.name}</Text>
-                            <Text>{project.summary}</Text>
+                            <Text>{project.body}</Text>
                         </Container>
                     </>
                     : <>
                         <Container>
                             <Text>{project.name}</Text>
-                            <Text>{project.summary}</Text>
+                            <Text>{project.body}</Text>
                         </Container>
                         <Container>
-                            <img src={project.photoUrls[0].url} width={500} alt='project' />
+                            {/* <img src={project.photoUrls[0].url} width={500} alt='project' /> */}
                         </Container>
                     </>
                 }

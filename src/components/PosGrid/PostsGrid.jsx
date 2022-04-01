@@ -11,10 +11,11 @@ const PostsGrid = ({ width }) => {
     const [posts, setPosts] = useState([])
     const [fetchNews, isNewsLoading, newsError] = useFetching(async () => {
         const news = await NewsService.getNews()
-        // const news = await NewsService.getNewsById(0)
+        // await NewsService.addNews({})
+        // const news = await NewsService.getNewsById(2)
         // await NewsService.addNews({id: 0, title: 'test', body: 'test'})
-        // await NewsService.deleteNewsById(41)
-        // await NewsService.updateNewsById(0, {id: 0, title: 'trate', body: 'bsdf'})
+        // await NewsService.deleteNewsById(2)
+        // await NewsService.updateNewsById(9, {id: 0, name: 'asdfhkjal;dg', body: '1239857342503=4'})
 
         // for (let i = 0; i < 20; ++i) {
             // await NewsService.updateNewsById(0, {id: 0, title: 'Post-1', body: 'Body-1'})

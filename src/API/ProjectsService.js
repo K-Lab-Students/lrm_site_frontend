@@ -1,31 +1,31 @@
 import axios from "axios"
 
-export default class NewsService {
+export default class ProjectsService {
 
     // static host = 'https://jsonplaceholder.typicode.com/posts'
-    static host = 'http://192.168.1.95:8080/news'
+    static host = 'http://192.168.1.95:8080/projects'
     // static format = '?format=json'
     static format = ''
 
-    static async getNews() {
+    static async getProjects() {
         const response = await axios.get(this.host + this.format)
         return response.data.data
     }
 
-    static async getNewsById(id) {
+    static async getProjectById(id) {
         const response = await axios.get(this.host + '/' + id)
         return [response.data.data]
     }
 
-    static async addNews(post) {
-        const response = await axios.post(this.host, post)
+    static async addProjects(projects) {
+        const response = await axios.post(this.host, projects)
     }
 
-    static async updateNewsById(id, post) {
-        const response = await axios.put(this.host + '/' + id, post)
+    static async updateProjectById(id, projects) {
+        const response = await axios.put(this.host + '/' + id, projects)
     }
 
-    static async deleteNewsById(id) {
+    static async deleteProjectById(id) {
         const response = await axios.delete(this.host + '/' + id)
     }
 }

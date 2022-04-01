@@ -8,7 +8,7 @@ const Post = ({ postData }) => {
     return (
         <Container className={styles.post}>
             <Group >
-                <Text size='xl'>{postData.title}</Text>
+                <Text size='xl'>{postData.name}</Text>
                 {/* {postData.userId.map(tagName => <Badge color='pink'>{tagName}</Badge>)} */}
                 
             </Group>
