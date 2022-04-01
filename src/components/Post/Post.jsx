@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Container, Text, Divider, Group, Badge } from '@mantine/core'
+import { Container, Text, Divider, Group } from '@mantine/core'
 
 import styles from './PostStyle.module.css'
 

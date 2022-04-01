@@ -2,27 +2,27 @@ import React from 'react'
 
 import { Container, Group, Text } from '@mantine/core'
 
-const Project = ({ imageLeftPos, project }) => {
+const Comptetition = ({ imageLeftPos, competition }) => {
     return (
         <Container>
             <Group>
                 {imageLeftPos
                     ? <>
                         <Container>
-                            <img src={project.photoUrls[0].url} width={500} alt='project' />
+                            <img src={competition.img} width={500} alt='comp' />
                         </Container>
                         <Container>
-                            <Text>{project.name}</Text>
-                            <Text>{project.summary}</Text>
+                            <Text>{competition.name}</Text>
+                            <Text>{competition.body}</Text>
                         </Container>
                     </>
                     : <>
                         <Container>
-                            <Text>{project.name}</Text>
-                            <Text>{project.summary}</Text>
+                            <Text>{competition.name}</Text>
+                            <Text>{competition.body}</Text>
                         </Container>
                         <Container>
-                            <img src={project.photoUrls[0].url} width={500} alt='project' />
+                            <img src={competition.img} width={500} alt='comp' />
                         </Container>
                     </>
                 }
@@ -31,4 +31,4 @@ const Project = ({ imageLeftPos, project }) => {
     )
 }
 
-export default Project
+export default Comptetition

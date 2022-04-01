@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-
-import { Modal } from "@mantine/core";
+import React from "react";
 
 import { Switch, Route } from "react-router-dom";
 
@@ -13,6 +11,8 @@ import AboutPageGrid from "../AboutPageGrid/AboutPageGrid";
 import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
 import UserProfile from "../UserProfile/UserProfile";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import CompetitionsPage from "../CompetitionsPage/CompetitionsPage";
+import ReginstrationPage from "../ReginstrationPage/ReginstrationPage";
 
 import styles from './PageBodyStyle.module.css'
 
@@ -31,7 +31,7 @@ const PageBody = () => {
                     <PostsGrid width={contentWidth} />
                 </Route>
                 <Route path='/competitions'>
-                    <div>competitions</div>
+                    <CompetitionsPage width={contentWidth} />
                 </Route>
                 <Route path='/projects'>
                     <ProjectsPageGrid width={contentWidth} />
@@ -41,6 +41,9 @@ const PageBody = () => {
                 </Route>
                 <Route path='/sign-in'>
                     <AuthenticationForm width={contentWidth} />
+                </Route>
+                <Route path='/sing-up'>
+                    <ReginstrationPage width={contentWidth} />
                 </Route>
                 <Route path='/lk'>
                     <UserProfile width={contentWidth} />

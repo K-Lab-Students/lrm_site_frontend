@@ -1,5 +1,5 @@
-import { Container, Grid, Image } from '@mantine/core'
 import React from 'react'
+import { Container, Grid, Image } from '@mantine/core'
 import { Link } from 'react-router-dom'
 import Body from '../Body/Body'
 

@@ -6,8 +6,8 @@ const MyButton = ({ text, setState, buttonId, styles = {}, subtle = true }) => {
     return (
         <Button
             variant={subtle ? 'subtle' : 'filled'}
-            styles={styles}
-            // onClick={() => setState(buttonId)}
+            style={styles}
+        // onClick={() => setState(buttonId)}
         >
             <Text>{text}</Text>
         </Button>
@@ -69,7 +69,20 @@ const ButtonSingIn = ({ setState, style = {} }) => {
             buttonId={buttonId}
             setState={setState}
             styles={style}
-            text='Вход' 
+            text='Вход'
+            subtle={false}
+        />
+    )
+}
+
+const ButtonSingUp = ({ setState, style = {} }) => {
+    const buttonId = 'singup'
+    return (
+        <MyButton
+            buttonId={buttonId}
+            setState={setState}
+            styles={style}
+            text='Регистрация'
             subtle={false}
         />
     )
@@ -80,5 +93,6 @@ export {
     ButtonCompetentions,
     ButtonProjects,
     ButtonAbout,
-    ButtonSingIn
+    ButtonSingIn,
+    ButtonSingUp
 }

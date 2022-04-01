@@ -7,12 +7,18 @@ import NewsService from '../../API/NewsService'
 
 import { useFetching } from '../../hooks/useFetching'
 
-import axios from 'axios'
-
 const PostsGrid = ({ width }) => {
     const [posts, setPosts] = useState([])
     const [fetchNews, isNewsLoading, newsError] = useFetching(async () => {
         const news = await NewsService.getNews()
+        // const news = await NewsService.getNewsById(0)
+        // await NewsService.addNews({id: 0, title: 'test', body: 'test'})
+        // await NewsService.deleteNewsById(41)
+        // await NewsService.updateNewsById(0, {id: 0, title: 'trate', body: 'bsdf'})
+
+        // for (let i = 0; i < 20; ++i) {
+            // await NewsService.updateNewsById(0, {id: 0, title: 'Post-1', body: 'Body-1'})
+        // }
         setPosts(news)
     })
 
@@ -22,14 +28,14 @@ const PostsGrid = ({ width }) => {
 
     return (
         <Body width={width}>
-            {newsError && 
+            {newsError &&
                 <h1>АААА ${newsError} АААА</h1>
             }
             {isNewsLoading
                 ? <h1>АААА ИДЕТ ЗАГРУЗКА НОВОСТЕЙ АААА</h1>
-                : posts.map(post =>
-                    <Post postData={post} key={post.id} />
-                )
+                : posts.map(post => {
+                    return <Post postData={post} key={post.id} />
+                })
             }
         </Body>
     )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import Body from '../Body/Body'
 import Project from './Project'
