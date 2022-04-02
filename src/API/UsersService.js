@@ -1,10 +1,10 @@
 import axios from "axios"
 
-export default class ProjectsService {
+export default class UsersService {
 
     // static host = 'https://jsonplaceholder.typicode.com/posts'
     static host = 'http://localhost:8080'
-    static path = '/projects'
+    static path = '/users'
     // static format = '?format=json'
     static format = ''
 
@@ -18,12 +18,12 @@ export default class ProjectsService {
         return [response.data.data]
     }
 
-    static async create(projects) {
-        const response = await axios.post(this.host + this.path, projects)
+    static async create(user) {
+        const response = await axios.post(this.host + this.path, user)
     }
 
-    static async update(id, projects) {
-        const response = await axios.put(this.host + this.path + '/' + id, projects)
+    static async updateById(id, user) {
+        const response = await axios.put(this.host + this.path + '/' + id, user)
     }
 
     static async delete(id) {

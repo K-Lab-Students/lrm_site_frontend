@@ -1,15 +1,18 @@
 import React from 'react'
 
-import { Container, Group, Text } from '@mantine/core'
+import { Container, Divider, Group, Text } from '@mantine/core'
+
+import ProjectsService from '../../API/ProjectsService'
 
 const Project = ({ imageLeftPos, project }) => {
+    const baseUrl = ProjectsService.host
     return (
         <Container>
-            <Group>
+            <Group style={{ marginTop: 10, marginBottom: 20 }}>
                 {imageLeftPos
                     ? <>
                         <Container>
-                            {/* <img src={project.photoUrls[0].url} width={500} alt='project' /> */}
+                            <img src={baseUrl + project.files[0].file_path} width={500} alt='project' />
                         </Container>
                         <Container>
                             <Text>{project.name}</Text>
@@ -22,7 +25,7 @@ const Project = ({ imageLeftPos, project }) => {
                             <Text>{project.body}</Text>
                         </Container>
                         <Container>
-                            {/* <img src={project.photoUrls[0].url} width={500} alt='project' /> */}
+                            <img src={baseUrl + project.files[0].file_path} width={500} alt='project' />
                         </Container>
                     </>
                 }

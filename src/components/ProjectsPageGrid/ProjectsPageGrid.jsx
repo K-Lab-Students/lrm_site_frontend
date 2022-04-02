@@ -11,7 +11,9 @@ const ProjectsPageGrid = ({ width }) => {
 
     const [projects, setProjects] = useState([])
     const [fetchProjects, isNewsLoading, projectsError] = useFetching(async () => {
-        const proj = await ProjectsService.getProjects()
+        const proj = await ProjectsService.get()
+        console.log(proj);
+        // const proj = await ProjectsService.getProjectById(10)
         setProjects(proj)
     })
 
@@ -26,12 +28,12 @@ const ProjectsPageGrid = ({ width }) => {
             <center>
                 <h1>Наши проекты</h1>
             </center>
-            {isNewsLoading
-                ? <h1>АААА ИДЕТ ЗАГРУЗКА ПРОЕКТОВ АААА</h1>
-                : projects.map(project =>
-                    <Project imageLeftPos={projectIter++ % 2} project={project} key={project.id} />
-                )
+            {projectsError &&
+                <h1>АААА ${projectsError} АААА</h1>
             }
+            {projects.map(project =>
+                <Project imageLeftPos={projectIter++ % 2} project={project} key={project.id} />
+            )}
         </Body>
     )
 }
