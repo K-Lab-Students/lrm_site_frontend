@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import { Button, TextInput, Modal, Textarea, Group } from '@mantine/core'
+import RichTextEditor, { RichTextEditorLabels } from '@mantine/rte'
 import NewsService from '../../API/NewsService'
 
 const UserProfilePosts = () => {
@@ -12,9 +13,13 @@ const UserProfilePosts = () => {
     return (
         <div>
             <Button onClick={() => setModalOpened(true)}>Добавить новость</Button>
-            <Modal opened={modalOpened} onClose={() => setModalOpened(false)}>
-                <TextInput title={'Название'} onChange={(e) => setPostTitle(e.currentTarget.value)} />
-                <Textarea onChange={(e) => setPostBody(e.currentTarget.value)} />
+            <Modal
+                hideCloseButton={true}
+                size='lg'
+                opened={modalOpened}
+                onClose={() => setModalOpened(false)}
+            >
+                <RichTextEditor value={postBody} onChange={setPostBody} sticky={true} />
                 <Group>
                     <Button onClick={() => {
                         NewsService.addNews({ id: 0, name: postTitle, body: postBody })

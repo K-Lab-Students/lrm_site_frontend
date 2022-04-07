@@ -11,7 +11,6 @@ const PostsGrid = ({ width }) => {
     const [posts, setPosts] = useState([])
     const [fetchNews, isNewsLoading, newsError] = useFetching(async () => {
         const news = await NewsService.getNews()
-        // await NewsService.addNews({})
         // const news = await NewsService.getNewsById(10)
         // await NewsService.addNews({id: 0, title: 'test', body: 'test'})
         // await NewsService.deleteNewsById(2)

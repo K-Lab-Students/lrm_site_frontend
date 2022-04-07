@@ -4,6 +4,7 @@ export default class UsersService {
 
     // static host = 'https://jsonplaceholder.typicode.com/posts'
     static host = 'http://localhost:8080'
+
     static path = '/users'
     // static format = '?format=json'
     static format = ''
