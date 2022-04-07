@@ -22,7 +22,7 @@ const UserProfilePosts = () => {
                 <RichTextEditor value={postBody} onChange={setPostBody} sticky={true} />
                 <Group>
                     <Button onClick={() => {
-                        NewsService.addNews({ id: 0, name: postTitle, body: postBody })
+                        NewsService.add({ id: 0, name: postTitle, body: postBody })
                         setModalOpened(false)
                     }}>Добавить</Button>
                     <Button onClick={() =>

@@ -10,7 +10,7 @@ import { useFetching } from '../../hooks/useFetching'
 const PostsGrid = ({ width }) => {
     const [posts, setPosts] = useState([])
     const [fetchNews, isNewsLoading, newsError] = useFetching(async () => {
-        const news = await NewsService.getNews()
+        const news = await NewsService.get()
         // const news = await NewsService.getNewsById(10)
         // await NewsService.addNews({id: 0, title: 'test', body: 'test'})
         // await NewsService.deleteNewsById(2)

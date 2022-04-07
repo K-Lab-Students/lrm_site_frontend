@@ -11,15 +11,23 @@ import styles from './ReginstrationPageStyle.module.css'
 
 const ReginstrationPage = ({ width, setIsLogined }) => {
 
-    const [token, setToken, role, setRole] = useToken()
+    const [token, setToken, role, setRole, id, setId] = useToken()
 
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
+    const [loginError, setLoginError] = useState('')
 
-    const registration = () => {
-        // AuthService.registration()
-        console.log('fuck');
-        setIsLogined(true)
+    const registration = async () => {
+        try {
+            const resp = await AuthService.registration({ login, password })
+            console.log(resp);
+            setToken(resp.token)
+            setId(resp.id)
+            setRole(resp.user_role)
+            setIsLogined(true)
+        } catch (e) {
+            setLoginError('Пользователь с таким логином существует' + e)
+        }
     }
 
     return (
@@ -27,8 +35,9 @@ const ReginstrationPage = ({ width, setIsLogined }) => {
             <Container className={styles.regContainer}>
                 <div className={styles.regDiv}>
                     <Text>Регистрация</Text>
-                    <TextInput label='Логин' onChange={setLogin} />
-                    <PasswordInput label='Пароль' onChange={setPassword} />
+                    <TextInput label='Логин' onChange={e => setLogin(e.target.value)} />
+                    <PasswordInput label='Пароль' onChange={e => setPassword(e.target.value)} />
+                    <Text color='red'>{loginError}</Text>
                     <Button onClick={registration} type="submit">Регистрация</Button>
                 </div>
             </Container>
@@ -37,3 +46,6 @@ const ReginstrationPage = ({ width, setIsLogined }) => {
 }
 
 export default ReginstrationPage
+
+//x-token: 
+//user_id: 

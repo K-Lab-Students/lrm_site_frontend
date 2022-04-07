@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -14,9 +14,17 @@ const App = () => {
 
     const [token] = useToken()
 
-    if (token) {
-        setLogined(true)
-    }
+
+
+    useEffect(() => {
+        console.log('check token');
+
+        if (token) {
+            console.log('token');
+
+            // setLogined(true)
+        }
+    }, [])
 
     return (
         <Router>
