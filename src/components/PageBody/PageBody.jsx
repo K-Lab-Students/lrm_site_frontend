@@ -16,7 +16,7 @@ import ReginstrationPage from "../ReginstrationPage/ReginstrationPage";
 
 import styles from './PageBodyStyle.module.css'
 
-const PageBody = () => {
+const PageBody = ({ setIsLogined }) => {
 
     const contentWidth = 1000
 
@@ -40,10 +40,10 @@ const PageBody = () => {
                     <AboutPageGrid width={contentWidth} />
                 </Route>
                 <Route path='/sign-in'>
-                    <AuthenticationForm width={contentWidth} />
+                    <AuthenticationForm width={contentWidth} setIsLogined={setIsLogined}/>
                 </Route>
                 <Route path='/sing-up'>
-                    <ReginstrationPage width={contentWidth} />
+                    <ReginstrationPage width={contentWidth} setIsLogined={setIsLogined}/>
                 </Route>
                 <Route path='/lk'>
                     <UserProfile width={contentWidth} />

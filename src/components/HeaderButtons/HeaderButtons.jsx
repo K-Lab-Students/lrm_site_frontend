@@ -88,11 +88,25 @@ const ButtonSingUp = ({ setState, style = {} }) => {
     )
 }
 
+const ButtonToLK = ({ setState, style = {} }) => {
+    const buttonId = 'tolk'
+    return (
+        <MyButton
+            buttonId={buttonId}
+            setState={setState}
+            styles={style}
+            text='Личный кабинет'
+            subtle={false}
+        />
+    )
+}
+
 export {
     ButtonNews,
     ButtonCompetentions,
     ButtonProjects,
     ButtonAbout,
     ButtonSingIn,
-    ButtonSingUp
+    ButtonSingUp,
+    ButtonToLK
 }

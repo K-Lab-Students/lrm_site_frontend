@@ -2,13 +2,13 @@ import React from 'react';
 
 import { Header, MediaQuery, Burger, useMantineTheme, Container, Image } from '@mantine/core';
 
-import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn, ButtonProjects, ButtonSingUp } from '../HeaderButtons/HeaderButtons'
+import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn, ButtonProjects, ButtonSingUp, ButtonToLK } from '../HeaderButtons/HeaderButtons'
 
 import { Link } from "react-router-dom";
 
 import logoBlack from '../../pics/logoBlack.png'
 
-const MyHeader = ({ openedMenu, setOpenedMenu }) => {
+const MyHeader = ({ openedMenu, setOpenedMenu, isLogined }) => {
 
     const theme = useMantineTheme()
 
@@ -36,8 +36,16 @@ const MyHeader = ({ openedMenu, setOpenedMenu }) => {
 
                 <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
                     <Container style={{ marginRight: 0, width: 'auto', marginLeft: 0 }}>
-                        <Link to='/sing-up' children={<ButtonSingUp style={{ margin: '10px !important' }} />} />
-                        <Link to='/sign-in' children={<ButtonSingIn style={{ margin: '10px !important' }} />} />
+                        {!isLogined
+                            ?
+                            <>
+                                <Link to='/sing-up' children={<ButtonSingUp style={{ margin: '10px !important' }} />} />
+                                <Link to='/sign-in' children={<ButtonSingIn style={{ margin: '10px !important' }} />} />
+                            </>
+                            : <Link to='/lk' children={<ButtonToLK style={{ margin: '10px !important' }} />} />
+                        }
+
+
                     </Container>
                 </MediaQuery>
 
