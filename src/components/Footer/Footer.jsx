@@ -6,7 +6,7 @@ import styles from './FooterStyle.module.css'
 const Footer = () => {
     return (
         <footer className={styles.footer}>
-            footer
+            Designed by ©vadya_forester
         </footer>
     )
 }

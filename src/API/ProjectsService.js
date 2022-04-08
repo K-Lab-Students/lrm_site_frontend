@@ -20,14 +20,14 @@ export default class ProjectsService {
     }
 
     static async create(projects) {
-        const response = await axios.post(this.host + this.path, projects)
+        const response = await axios.post(this.host + this.path, projects, NetworkCommon.getConfig())
     }
 
     static async update(id, projects) {
-        const response = await axios.put(this.host + this.path + '/' + id, projects)
+        const response = await axios.put(this.host + this.path + '/' + id, projects, NetworkCommon.getConfig())
     }
 
     static async delete(id) {
-        const response = await axios.delete(this.host + this.path + '/' + id)
+        const response = await axios.delete(this.host + this.path + '/' + id, NetworkCommon.getConfig())
     }
 }

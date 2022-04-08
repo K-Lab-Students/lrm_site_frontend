@@ -7,6 +7,7 @@ export default class UsersService {
     static host = NetworkCommon.serverHost
 
     static path = '/users'
+    static adminUserUpdatePath = ''
     // static format = '?format=json'
     static format = ''
 
@@ -15,20 +16,17 @@ export default class UsersService {
         return response.data.data
     }
 
-    static async getById(id) {
-        const response = await axios.get(this.host + this.path + '/' + id)
-        return [response.data.data]
+    static async getById() {
+        const response = await axios.get(this.host + '/user', NetworkCommon.getConfig())
+        return response.data.data
     }
 
-    static async create(user) {
-        const response = await axios.post(this.host + this.path, user)
+    static async update(user) {
+        console.log(this.host + '/user/update');
+        const response = await axios.put(this.host + '/user/update', user, NetworkCommon.getConfig())
     }
 
-    static async updateById(id, user) {
-        const response = await axios.put(this.host + this.path + '/' + id, user)
-    }
-
-    static async delete(id) {
-        const response = await axios.delete(this.host + this.path + '/' + id)
+    static async adminUpdate(id, user) {
+        const response = await axios.put(this.host + this.adminUserUpdatePath + '/' + id, user, NetworkCommon.getConfig())
     }
 }
