@@ -12,17 +12,17 @@ const App = () => {
 
     const [logined, setLogined] = useState(false)
 
-    const [token] = useToken()
+    const [token, saveToken, role, saveRole, id, saveId] = useToken()
 
 
 
     useEffect(() => {
-        console.log('check token');
-
-        if (token) {
+        console.log('check token ' + JSON.stringify(localStorage.getItem('token')));
+        if (localStorage.getItem('token') != null) {
             console.log('token');
-
-            // setLogined(true)
+            setLogined(true)
+        } else {
+            setLogined(false)
         }
     }, [])
 
@@ -32,7 +32,7 @@ const App = () => {
 
             <LeftMenu openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} isLogined={logined} />
 
-            <PageBody setIsLogined={setLogined} />
+            <PageBody isLogined={logined} setIsLogined={setLogined} />
         </Router>
     );
 }

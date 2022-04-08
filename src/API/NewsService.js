@@ -1,9 +1,10 @@
 import axios from "axios"
 
+import NetworkCommon from "../common/NetworkCommon"
+
 export default class NewsService {
 
-    // static host = 'https://jsonplaceholder.typicode.com/posts'
-    static host = 'http://192.168.1.95:8080'
+    static host = NetworkCommon.serverHost
     static path = '/news'
     // static format = '?format=json'
     static format = ''

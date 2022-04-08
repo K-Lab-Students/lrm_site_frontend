@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header, MediaQuery, Burger, useMantineTheme, Container, Image } from '@mantine/core';
+import { Header, MediaQuery, Burger, useMantineTheme, Container, Image, Button } from '@mantine/core';
 
 import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn, ButtonProjects, ButtonSingUp, ButtonToLK } from '../HeaderButtons/HeaderButtons'
 
@@ -37,12 +37,17 @@ const MyHeader = ({ openedMenu, setOpenedMenu, isLogined }) => {
                 <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
                     <Container style={{ marginRight: 0, width: 'auto', marginLeft: 0 }}>
                         {!isLogined
-                            ?
-                            <>
+                            ? <>
                                 <Link to='/sing-up' children={<ButtonSingUp style={{ margin: '10px !important' }} />} />
                                 <Link to='/sign-in' children={<ButtonSingIn style={{ margin: '10px !important' }} />} />
                             </>
-                            : <Link to='/lk' children={<ButtonToLK style={{ margin: '10px !important' }} />} />
+                            : <>
+                                <Link to='/lk' children={<ButtonToLK style={{ margin: '10px !important' }} />} />
+                                <Button variant='filled' type={'submit'} onClick={(e) => {
+                                    localStorage.clear()
+                                    window.location.replace('/')
+                                }}>Выход</Button>
+                            </>
                         }
 
 

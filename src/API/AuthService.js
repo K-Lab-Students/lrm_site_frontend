@@ -1,10 +1,9 @@
 import axios from "axios";
+import NetworkCommon from "../common/NetworkCommon";
 
 export default class AuthService {
 
-    // static host = 'https://jsonplaceholder.typicode.com/posts'
-    // static host = 'http://localhost:8080'
-    static host = 'http://192.168.1.95:8080'
+    static host = NetworkCommon.serverHost
     // static format = '?format=json'
     static format = ''
 

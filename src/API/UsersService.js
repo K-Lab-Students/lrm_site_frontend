@@ -1,9 +1,10 @@
 import axios from "axios"
 
+import NetworkCommon from "../common/NetworkCommon"
+
 export default class UsersService {
 
-    // static host = 'https://jsonplaceholder.typicode.com/posts'
-    static host = 'http://localhost:8080'
+    static host = NetworkCommon.serverHost
 
     static path = '/users'
     // static format = '?format=json'

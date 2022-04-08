@@ -8,6 +8,7 @@ import useToken from '../../hooks/useToken'
 import Body from '../Body/Body'
 
 import styles from './ReginstrationPageStyle.module.css'
+import { Link } from 'react-router-dom'
 
 const ReginstrationPage = ({ width, setIsLogined }) => {
 
@@ -17,17 +18,18 @@ const ReginstrationPage = ({ width, setIsLogined }) => {
     const [password, setPassword] = useState('')
     const [loginError, setLoginError] = useState('')
 
-    const registration = async () => {
-        try {
-            const resp = await AuthService.registration({ login, password })
-            console.log(resp);
-            setToken(resp.token)
-            setId(resp.id)
-            setRole(resp.user_role)
-            setIsLogined(true)
-        } catch (e) {
-            setLoginError('Пользователь с таким логином существует' + e)
-        }
+    const registration = () => {
+        AuthService.registration({ login, password })
+            .then((resp) => {
+                console.log(resp);
+                setToken(resp.token)
+                setId(resp.id)
+                setRole(resp.user_role)
+                setIsLogined(true)
+            })
+            .catch((e) => {
+                setLoginError('Пользователь с таким логином существует' + e)
+            })
     }
 
     return (
@@ -38,7 +40,7 @@ const ReginstrationPage = ({ width, setIsLogined }) => {
                     <TextInput label='Логин' onChange={e => setLogin(e.target.value)} />
                     <PasswordInput label='Пароль' onChange={e => setPassword(e.target.value)} />
                     <Text color='red'>{loginError}</Text>
-                    <Button onClick={registration} type="submit">Регистрация</Button>
+                    <button onClick={registration}>Регистрация</button>
                 </div>
             </Container>
         </Body>
