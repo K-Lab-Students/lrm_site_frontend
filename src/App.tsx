@@ -1,21 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { BrowserRouter as Router} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import MyHeader from './components/Header/MyHeader';
 import LeftMenu from './components/LeftMenu/LeftMenu';
 import PageBody from './components/PageBody/PageBody';
+import useToken from './hooks/useToken';
 
 const App = () => {
-    const [openedMenu, setOpenedMenu] = useState(false);
+    const [openedMenu, setOpenedMenu] = useState(false)
+
+    const [logined, setLogined] = useState(false)
+
+    const [token, saveToken, role, saveRole, id, saveId] = useToken()
+
+
+
+    useEffect(() => {
+        console.log('check token ' + JSON.stringify(localStorage.getItem('token')));
+        if (localStorage.getItem('token') != null) {
+            console.log('token');
+            setLogined(true)
+        } else {
+            setLogined(false)
+        }
+    }, [])
 
     return (
         <Router>
-            <MyHeader openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} />
+            <MyHeader openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} isLogined={logined} />
 
-            <LeftMenu openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} />
+            <LeftMenu openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} isLogined={logined} />
 
-            <PageBody />
+            <PageBody isLogined={logined} setIsLogined={setLogined} />
         </Router>
     );
 }
