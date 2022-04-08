@@ -4,11 +4,11 @@ import { Card, Text, Badge, Avatar } from '@mantine/core'
 
 import styles from './PersonCardStyle.module.css'
 
-import UsersService from '../../API/UsersService'
+import NetworkCommon from '../../common/NetworkCommon'
 
-const PersonCard = ({person}) => {
+const PersonCard = ({ person }) => {
 
-    const baseUrl = UsersService.host
+    const baseUrl = NetworkCommon.serverHost
 
     return (
         <div>
@@ -22,11 +22,14 @@ const PersonCard = ({person}) => {
                     {person.sname + ' ' + person.name[0] + '. ' + person.pname[0] + '.'}
                 </Text>
                 <Text>
-                    Вуз, факультет
+                    {person.faculty_name}, {person.study_place_name}
                 </Text>
-                {/* <Badge color='pink' variant='light'>
-                    Компетенция
-                </Badge> */}
+                {person.competitions.map(comp => {
+                    return (<Badge color={comp.color} variant='light' key={comp.id}>
+                        {comp.name}
+                    </Badge>)
+                })}
+
             </Card>
         </div>
     )

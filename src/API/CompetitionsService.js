@@ -2,10 +2,10 @@ import axios from "axios"
 
 import NetworkCommon from "../common/NetworkCommon"
 
-export default class NewsService {
+export default class CompetitionsService {
 
     static host = NetworkCommon.serverHost
-    static path = '/news'
+    static path = '/competitions'
     // static format = '?format=json'
     static format = ''
 
