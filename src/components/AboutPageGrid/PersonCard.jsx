@@ -9,7 +9,7 @@ import NetworkCommon from '../../common/NetworkCommon'
 const PersonCard = ({ person }) => {
 
     const baseUrl = NetworkCommon.serverHost
-
+    
     return (
         <div>
             <Card className={styles.personCard} shadow="sm" padding="lg" withBorder>

@@ -22,7 +22,6 @@ const UserProfile = ({ width }) => {
 
     const [fetchUser, isLoading, error] = useFetching(async () => {
         const resp = await UsersService.getById()
-        console.log(resp);
 
         setUserLogin(resp.email)
         setName(resp.sname[0] + '-' + resp.name[0])

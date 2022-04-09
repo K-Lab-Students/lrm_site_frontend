@@ -17,9 +17,7 @@ const App = () => {
 
 
     useEffect(() => {
-        console.log('check token ' + JSON.stringify(localStorage.getItem('token')));
         if (localStorage.getItem('token') != null) {
-            console.log('token');
             setLogined(true)
         } else {
             setLogined(false)

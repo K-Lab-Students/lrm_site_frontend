@@ -40,17 +40,6 @@ const UserProfileSettings = () => {
         setSname(userInfo.sname)
         setName(userInfo.name)
         setPname(userInfo.pname)
-        setFac(userInfo.faculty_id)
-        setStPlace(userInfo.study_place_id)
-
-        console.log(userInfo);
-
-        let defaultCompetitionsArray = []
-        for (let i = 0; i < userInfo.competitions.length; ++i) {
-            defaultCompetitionsArray.push(userInfo.competitions[i].id)
-        }
-        setCompetitions(defaultCompetitionsArray)
-        console.log(defaultCompetitionsArray);
 
         let defaultStudyPlacesArray = []
         for (let i = 0; i < studyPlaceList.length; ++i) {

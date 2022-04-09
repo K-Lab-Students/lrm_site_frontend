@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
-import { Navbar, MediaQuery, Divider, Button } from '@mantine/core';
+import { Navbar, MediaQuery, Divider, Button, Text } from '@mantine/core';
 
 import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn, ButtonProjects, ButtonSingUp, ButtonToLK } from '../HeaderButtons/HeaderButtons';
 
@@ -31,7 +31,7 @@ const MyNavbar = ({ openedNavbar, setMainButtonsStates, isLogined }) => {
                             <Button variant='filled' type={'submit'} onClick={(e) => {
                                 localStorage.clear()
                                 window.location.replace('/')
-                            }}>Выход</Button>
+                            }}><Text>Выход</Text></Button>
                         </Navbar.Section>
                     </>
                 }

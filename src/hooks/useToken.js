@@ -23,9 +23,9 @@ export default function useToken() {
     const [id, setId] = useState(getId())
 
     const saveToken = userToken => {
-        localStorage.setItem('token', JSON.stringify(userToken));
-        setToken(userToken.token);
-    };
+        localStorage.setItem('token', JSON.stringify(userToken))
+        setToken(userToken.token)
+    }
 
     const saveRole = userRole => {
         localStorage.setItem('role', JSON.stringify(userRole))

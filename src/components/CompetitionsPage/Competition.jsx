@@ -7,8 +7,6 @@ const Comptetition = ({ imageLeftPos, competition }) => {
 
     const host = NetworkCommon.serverHost
 
-    console.log(host + '/' + competition.files[0].file_path);
-
     return (
         <Container>
             <Group>

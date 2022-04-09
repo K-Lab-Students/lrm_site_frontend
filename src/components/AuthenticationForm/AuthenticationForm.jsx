@@ -20,7 +20,6 @@ const AuthenticationForm = ({ width, setIsLogined }) => {
     const auth = async () => {
         try {
             const resp = await AuthService.login({ login, password })
-            console.log(resp)
             setToken(resp.token)
             setId(resp.id)
             setRole(resp.user_role)
@@ -28,7 +27,6 @@ const AuthenticationForm = ({ width, setIsLogined }) => {
         } catch (e) {
             setLoginError('Проверьте правильность введенных данных' + e)
         }
-        console.log('fuck');
     }
 
     return (

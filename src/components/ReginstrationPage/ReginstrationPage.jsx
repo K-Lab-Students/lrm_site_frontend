@@ -40,7 +40,7 @@ const ReginstrationPage = ({ width, setIsLogined }) => {
                     <TextInput label='Логин' onChange={e => setLogin(e.target.value)} />
                     <PasswordInput label='Пароль' onChange={e => setPassword(e.target.value)} />
                     <Text color='red'>{loginError}</Text>
-                    <button onClick={registration}>Регистрация</button>
+                    <Button onClick={registration}>Регистрация</Button>
                 </div>
             </Container>
         </Body>
