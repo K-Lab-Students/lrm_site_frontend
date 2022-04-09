@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TextInput, Divider, MultiSelect, Button, Select } from '@mantine/core'
+import { TextInput, Divider, MultiSelect, Button, Select, Avatar } from '@mantine/core'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import UsersService from '../../API/UsersService'
@@ -18,8 +18,8 @@ const UserProfileSettings = () => {
     const [name, setName] = useState('')
     const [pname, setPname] = useState('')
     const [date, setDate] = useState('')
-    const [fac, setFac] = useState('')
-    const [stPlase, setStPlace] = useState('')
+    const [fac, setFac] = useState(0)
+    const [stPlase, setStPlace] = useState(0)
 
     const [competitions, setCompetitions] = useState([])
     const [studyPlace, setStudyPlace] = useState([])
@@ -29,7 +29,6 @@ const UserProfileSettings = () => {
     const [image, setImage] = useState({})
     const [imageBase64, setImageBase64] = useState('')
 
-    const [buttonClicked, setButtonClicked] = useState(false)
     const [imageLoading, setImageLoading] = useState(false)
 
     const [fetchUsers, isLoading, error] = useFetching(async () => {
@@ -38,25 +37,22 @@ const UserProfileSettings = () => {
         const studyPlaceList = await StudyPlacesService.get()
         const facultiesList = await FacultiesService.get()
 
-
         setSname(userInfo.sname)
         setName(userInfo.name)
         setPname(userInfo.pname)
-        // setDate(userInfo.birthday)
-        setFac(userInfo.faculty_name)
-        // setStudyPlace(userInfo.study_place_name)
+        setFac(userInfo.faculty_id)
+        setStPlace(userInfo.study_place_id)
+
+        console.log(userInfo);
 
         let defaultCompetitionsArray = []
         for (let i = 0; i < userInfo.competitions.length; ++i) {
-            defaultCompetitionsArray.push({
-                value: userInfo.competitions[i].id,
-                label: userInfo.competitions[i].name
-            })
+            defaultCompetitionsArray.push(userInfo.competitions[i].id)
         }
         setCompetitions(defaultCompetitionsArray)
+        console.log(defaultCompetitionsArray);
 
         let defaultStudyPlacesArray = []
-        // console.log(defaultStudyPlacesArray);
         for (let i = 0; i < studyPlaceList.length; ++i) {
             defaultStudyPlacesArray.push({
                 value: studyPlaceList[i].id,
@@ -88,33 +84,23 @@ const UserProfileSettings = () => {
         fetchUsers()
     }, [])
 
-
-
     const theme = useMantineTheme();
 
     const dropzoneChildren = (status, theme) => (
-        <Group position="center" spacing="xl" style={{ minHeight: 220, pointerEvents: 'none' }}>
-            <div>
-                <Text size="xl" inline>
-                    Drag images here or click to select files
-                </Text>
-                <Text size="sm" color="dimmed" inline mt={7}>
-                    Attach as many files as you like, each file should not exceed 5mb
-                </Text>
-                <Text>{status.accepted}</Text>
-            </div>
-        </Group>
+        <Avatar size={150} radius={150} alt='user-avatar' src={imageBase64}>U-M</Avatar>
     );
 
     function getBase64(file) {
         var reader = new FileReader();
         try {
             reader.readAsDataURL(file);
-            reader.onload = function () {
+            reader.onloadstart = function () {
+                setImageLoading(true)
+            }
+            reader.onloadend = function () {
+                setImageLoading(false)
                 setImageBase64(reader.result)
-                console.log('here ' + imageBase64);
-                console.log('end');
-            };
+            }
             reader.onerror = function (error) {
                 console.log('Error: ', error);
             };
@@ -123,21 +109,8 @@ const UserProfileSettings = () => {
         }
     }
 
-    const cb = () => {
-        setButtonClicked(true)
-        getBase64(image)
-        setImageLoading(true)
-    }
-
-    let timerId = setInterval(() => {
-        if (imageBase64 !== '') {
-            setImageLoading(false)
-            clearInterval(timerId)
-        }
-    }, 100)
-    // setTimeout(() => { ; alert('stop'); }, 5000);
-
     const sendData = () => {
+        let compstring = '{' + competitions.map(c => `${c}`) + '}'
         const user = {
             id: 0,
             sname: sname,
@@ -145,10 +118,11 @@ const UserProfileSettings = () => {
             pname: pname,
             birthday: '2001-01-01',
             file: imageBase64,
-            faculty_id: fac,
-            study_place_id: stPlase
-
+            faculty_id: parseInt(fac),
+            study_place_id: parseInt(stPlase),
+            competitions_id: compstring
         }
+        console.log(user);
         UsersService.update(user)
             .then((resp) => { })
             .catch(e => console.log(e))
@@ -160,14 +134,14 @@ const UserProfileSettings = () => {
                 loading={imageLoading}
                 onDrop={(files) => { console.log('accepted files', files); setImage(files[0]) }}
                 onReject={(files) => console.log('rejected files', files)}
-                maxSize={3 * 1024 ** 2}
+                maxSize={10 * 1024 ** 2}
                 accept={IMAGE_MIME_TYPE}
                 multiple={false}
             >
                 {(status) => dropzoneChildren(status, theme)}
             </Dropzone>
 
-            <Button onClick={cb}>Загрузить фотографию</Button>
+            <Button onClick={() => getBase64(image)}>Загрузить фотографию</Button>
 
 
             <h2 style={{ margin: 0 }}>Личные данные</h2>
@@ -182,13 +156,14 @@ const UserProfileSettings = () => {
             {/* Дата рождения
             <TextInput type='date' style={{ width: 500 }} placeholder={date} onChange={setDate}></TextInput> */}
             Факультет
-            <Select style={{ width: 500 }} data={faculty} value={fac} onChange={setFac}></Select>
+            <Select style={{ width: 500 }} data={faculty} value={fac} onChange={e => { setFac(e); }}></Select>
             Место учебы
-            <Select style={{ width: 500 }} data={studyPlace} value={studyPlace} onChange={setStPlace}></Select>
+            <Select style={{ width: 500 }} data={studyPlace} defaultValue={stPlase} value={studyPlace} onChange={e => { setStPlace(e); }}></Select>
             Представляемые компетенции
             <MultiSelect
                 data={allCompet}
                 defaultValue={competitions}
+                onChange={setCompetitions}
             />
             <Button onClick={sendData}>Изменить данные</Button>
         </div>

@@ -12,13 +12,13 @@ const UserProfileMenu = () => {
                         Настройки
                     </Text>
                 </Button>} />
-
+{/* 
             <Link to='/lk/my-projects' children={
                 <Button variant="subtle">
                     <Text size='lg'>
                         Мои проекты
                     </Text>
-                </Button>} />
+                </Button>} /> */}
 
             <Link to='/lk/my-posts' children={
                 <Button variant="subtle">
