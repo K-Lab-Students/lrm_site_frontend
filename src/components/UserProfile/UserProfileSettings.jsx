@@ -48,10 +48,7 @@ const UserProfileSettings = () => {
     }
 
     const convertCompetitionsToForm = (respList) => {
-        let res = []
-        respList.slice(1, respList.length - 1).split(',').forEach(item => res.push(parseInt(item)))
-        console.log(res);
-        return res
+        return respList.slice(1, respList.length - 1).split(',').map(item => parseInt(item))
     }
 
     const [fetchUsers, isLoading, error] = useFetching(async () => {
