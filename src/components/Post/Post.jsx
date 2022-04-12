@@ -18,6 +18,7 @@ const Post = ({ postData, setModalOpened, setPostBody, setNewsId }) => {
         setModalOpened(true)
         setNewsId(postData.id)
         setPostBody(postData.body)
+        console.log('ckicl');
     }
 
     const deleteButtonCB = async (e) => {
@@ -30,7 +31,7 @@ const Post = ({ postData, setModalOpened, setPostBody, setNewsId }) => {
             {JSON.parse(localStorage.getItem('role')) === 0
                 ?
                 (< div style={{ margin: '0 0 0 auto', height: 'auto' }}>
-                    <Group spacing='xs'>
+                    <Group spacing={1}>
                         <ActionIcon color={'green'} onClick={editButtonCB}><Pencil /></ActionIcon>
                         <ActionIcon color={'red'} onClick={deleteButtonCB}><X /></ActionIcon>
                     </Group>
@@ -40,11 +41,15 @@ const Post = ({ postData, setModalOpened, setPostBody, setNewsId }) => {
             }
 
             <div className={styles.cardBody}>
-                {/* <Group grow> */}
+                <Group grow>
                     <TypographyStylesProvider>
                         <div dangerouslySetInnerHTML={{ __html: postData.body }} />
                     </TypographyStylesProvider>
-                {/* </Group> */}
+                </Group>
+            </div>
+
+            <div style={{ margin: '0 5px 5px auto', height: 'auto' }}>
+                <Text color='gray'>Вадим</Text>
             </div>
         </div >
     )

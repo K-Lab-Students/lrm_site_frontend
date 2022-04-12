@@ -17,65 +17,70 @@ const UserProfileSettings = () => {
     const [sname, setSname] = useState('')
     const [name, setName] = useState('')
     const [pname, setPname] = useState('')
-    const [date, setDate] = useState('')
-    const [fac, setFac] = useState(0)
-    const [stPlase, setStPlace] = useState(0)
 
-    const [competitions, setCompetitions] = useState([])
-    const [studyPlace, setStudyPlace] = useState([])
-    const [faculty, setFaculty] = useState([])
-    const [allCompet, setAllCompet] = useState([])
+    // const [date, setDate] = useState('')
+
+    const [userFaculty, setUserFaculty] = useState(0)
+    const [userStudyPlace, setUserStudyPlace] = useState(0)
+
+    const [defaultCompetitionsList, setDefaultCompetitionsList] = useState([])
+    const [defaultStudyPlaceValue, setDefaultStudyPlaceValue] = useState('')
+    const [defaultFacultyValue, setDefaultFacultyValue] = useState('')
+
+    const [studyPlaceList, setStudyPlaceList] = useState([])
+    const [facultyList, setFacultyList] = useState([])
+    const [competitionsList, setCompetitionsList] = useState([])
 
     const [image, setImage] = useState({})
     const [imageBase64, setImageBase64] = useState('')
 
     const [imageLoading, setImageLoading] = useState(false)
 
+    const convertResponseToForm = (respList, setFunction) => {
+        let defaultArray = []
+        respList.forEach(item => {
+            defaultArray.push({
+                value: item.id,
+                label: item.name
+            })
+        })
+        setFunction(defaultArray)
+    }
+
+    const convertCompetitionsToForm = (respList) => {
+        let res = []
+        respList.slice(1, respList.length - 1).split(',').forEach(item => res.push(parseInt(item)))
+        console.log(res);
+        return res
+    }
+
     const [fetchUsers, isLoading, error] = useFetching(async () => {
         const userInfo = await UsersService.getById()
-        const competitionsList = await CompetitionsService.get()
-        const studyPlaceList = await StudyPlacesService.get()
-        const facultiesList = await FacultiesService.get()
+        const competitionsResponce = await CompetitionsService.get()
+        const studyPlaceResponce = await StudyPlacesService.get()
+        const facultiesResponce = await FacultiesService.get()
 
         setSname(userInfo.sname)
         setName(userInfo.name)
         setPname(userInfo.pname)
 
-        let defaultStudyPlacesArray = []
-        for (let i = 0; i < studyPlaceList.length; ++i) {
-            defaultStudyPlacesArray.push({
-                value: studyPlaceList[i].id,
-                label: studyPlaceList[i].name
-            })
-        }
-        setStudyPlace(defaultStudyPlacesArray)
+        setUserFaculty(userInfo.faculty_id)
+        setUserStudyPlace(userInfo.study_place_id)
 
-        let defaultFacultiesArray = []
-        for (let i = 0; i < facultiesList.length; ++i) {
-            defaultFacultiesArray.push({
-                value: facultiesList[i].id,
-                label: facultiesList[i].name
-            })
-        }
-        setFaculty(defaultFacultiesArray)
+        convertResponseToForm(studyPlaceResponce, setStudyPlaceList)
+        convertResponseToForm(facultiesResponce, setFacultyList)
+        convertResponseToForm(competitionsResponce, setCompetitionsList)
 
-        let arrComp = []
-        for (let i = 0; i < competitionsList.length; ++i) {
-            arrComp.push({
-                value: competitionsList[i].id,
-                label: competitionsList[i].name
-            })
-        }
-        setAllCompet(arrComp)
+        setDefaultFacultyValue(userInfo.faculty_name)
+        setDefaultStudyPlaceValue(userInfo.study_place_name)
+        setDefaultCompetitionsList(convertCompetitionsToForm(userInfo.competitions_id))
     })
 
     useEffect(() => {
         fetchUsers()
     }, [])
 
-    const theme = useMantineTheme();
-
-    const dropzoneChildren = (status, theme) => (
+    const dropzoneChildren = (status) => (
         <Avatar size={150} radius={150} alt='user-avatar' src={imageBase64}>U-M</Avatar>
     );
 
@@ -99,7 +104,7 @@ const UserProfileSettings = () => {
     }
 
     const sendData = () => {
-        let compstring = '{' + competitions.map(c => `${c}`) + '}'
+        let compstring = '{' + defaultCompetitionsList.map(c => `${c}`) + '}'
         const user = {
             id: 0,
             sname: sname,
@@ -107,14 +112,15 @@ const UserProfileSettings = () => {
             pname: pname,
             birthday: '2001-01-01',
             file: imageBase64,
-            faculty_id: parseInt(fac),
-            study_place_id: parseInt(stPlase),
+            faculty_id: parseInt(userFaculty),
+            study_place_id: parseInt(userStudyPlace),
             competitions_id: compstring
         }
         console.log(user);
         UsersService.update(user)
             .then((resp) => { })
             .catch(e => console.log(e))
+        window.location.reload()
     }
 
     return (
@@ -127,7 +133,7 @@ const UserProfileSettings = () => {
                 accept={IMAGE_MIME_TYPE}
                 multiple={false}
             >
-                {(status) => dropzoneChildren(status, theme)}
+                {(status) => dropzoneChildren(status)}
             </Dropzone>
 
             <Button onClick={() => getBase64(image)}>Загрузить фотографию</Button>
@@ -136,23 +142,47 @@ const UserProfileSettings = () => {
             <h2 style={{ margin: 0 }}>Личные данные</h2>
             <Divider style={{ marginBottom: 15, marginTop: 4 }} />
 
-            Фамилия
-            <TextInput style={{ width: 500 }} placeholder={sname} onChange={e => setSname(e.target.value)}></TextInput>
-            Имя
-            <TextInput style={{ width: 500 }} placeholder={name} onChange={e => setName(e.target.value)}></TextInput>
-            Отчество
-            <TextInput style={{ width: 500 }} placeholder={pname} onChange={e => setPname(e.target.value)}></TextInput>
+            <TextInput
+                label={'Фамилия'}
+                style={{ width: 500 }}
+                placeholder={sname}
+                onChange={e => setSname(e.target.value)}
+            />
+            <TextInput
+                label={'Имя'}
+                style={{ width: 500 }}
+                placeholder={name}
+                onChange={e => setName(e.target.value)}
+            />
+            <TextInput
+                label={'Отчество'}
+                style={{ width: 500 }}
+                placeholder={pname}
+                onChange={e => setPname(e.target.value)}
+            />
             {/* Дата рождения
             <TextInput type='date' style={{ width: 500 }} placeholder={date} onChange={setDate}></TextInput> */}
-            Факультет
-            <Select style={{ width: 500 }} data={faculty} value={fac} onChange={e => { setFac(e); }}></Select>
-            Место учебы
-            <Select style={{ width: 500 }} data={studyPlace} defaultValue={stPlase} value={studyPlace} onChange={e => { setStPlace(e); }}></Select>
-            Представляемые компетенции
+            <Select
+                label={'Факультет'}
+                style={{ width: 500 }}
+                data={facultyList}
+                placeholder={defaultFacultyValue}
+                value={userFaculty}
+                onChange={e => { setUserFaculty(e); }}
+            />
+            <Select
+                label={'Место учебы'}
+                style={{ width: 500 }}
+                data={studyPlaceList}
+                placeholder={defaultStudyPlaceValue}
+                value={userStudyPlace}
+                onChange={e => { setUserStudyPlace(e); }}
+            />
             <MultiSelect
-                data={allCompet}
-                defaultValue={competitions}
-                onChange={setCompetitions}
+                label={'Представляемые компетенции'}
+                data={competitionsList}
+                value={defaultCompetitionsList}
+                onChange={setDefaultCompetitionsList}
             />
             <Button onClick={sendData}>Изменить данные</Button>
         </div>

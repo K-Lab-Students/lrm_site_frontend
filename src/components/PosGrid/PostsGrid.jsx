@@ -33,12 +33,13 @@ const PostsGrid = ({ width }) => {
                 onClose={() => setModalOpened(false)}
             >
                 <RichTextEditor value={postBody} defaultValue={posts.body} onChange={setPostBody} sticky={true} />
+                
                 <Group>
                     <Button type='submit' onClick={() => {
                         NewsService.updateById(newsId, { id: 0, name: '', body: postBody })
                         setModalOpened(false)
+                        window.location.reload()
                     }}>Добавить</Button>
-                    window.location.reload()
                     <Button onClick={() =>
                         setModalOpened(false)}
                     >Отмена</Button>
