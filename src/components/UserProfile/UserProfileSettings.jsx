@@ -8,7 +8,7 @@ import { useFetching } from '../../hooks/useFetching'
 import CompetitionsService from '../../API/CompetitionsService'
 import StudyPlacesService from '../../API/StudyPlaceService'
 
-import { Dropzone, DropzoneStatus, IMAGE_MIME_TYPE } from '@mantine/dropzone';
+import { Dropzone, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import { Group, Text, useMantineTheme, MantineTheme } from '@mantine/core';
 import FacultiesService from '../../API/FacultiesService'
 
@@ -48,7 +48,7 @@ const UserProfileSettings = () => {
     }
 
     const convertCompetitionsToForm = (respList) => {
-        return respList.slice(1, respList.length - 1).split(',').map(item => parseInt(item))
+        return respList.slice(1, respList.length - 1).split(',').map(value => parseInt(value))
     }
 
     const [fetchUsers, isLoading, error] = useFetching(async () => {
@@ -122,6 +122,9 @@ const UserProfileSettings = () => {
 
     return (
         <div>
+            <h2>Изменения фотографии профиля</h2>
+            <Divider style={{ marginBottom: 15, marginTop: 4 }} />
+            
             <Dropzone
                 loading={imageLoading}
                 onDrop={(files) => { console.log('accepted files', files); setImage(files[0]) }}

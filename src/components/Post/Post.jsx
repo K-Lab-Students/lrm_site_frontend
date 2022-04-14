@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import { Container, Text, Divider, Group, TypographyStylesProvider, Button, ActionIcon, Modal } from '@mantine/core'
-
+import { Text, Group, TypographyStylesProvider, ActionIcon } from '@mantine/core'
 
 import { X, Pencil } from 'tabler-icons-react';
 
@@ -11,24 +10,23 @@ import NewsService from '../../API/NewsService'
 
 const Post = ({ postData, setModalOpened, setPostBody, setNewsId }) => {
 
-    const baseUrl = NewsService.host
+    // const baseUrl = NewsService.host
 
     const editButtonCB = (e) => {
         e.preventDefault()
         setModalOpened(true)
         setNewsId(postData.id)
         setPostBody(postData.body)
-        console.log('ckicl');
     }
 
     const deleteButtonCB = async (e) => {
-        NewsService.deleteById(postData.id)
+        await NewsService.deleteById(postData.id)
         window.location.reload()
     }
 
     return (
         <div className={[styles.card]}>
-            {JSON.parse(localStorage.getItem('role')) === 0
+            {JSON.parse(localStorage.getItem('role')) === 0 || JSON.parse(localStorage.getItem('id')) === postData.author_id
                 ?
                 (< div style={{ margin: '0 0 0 auto', height: 'auto' }}>
                     <Group spacing={1}>
@@ -49,7 +47,7 @@ const Post = ({ postData, setModalOpened, setPostBody, setNewsId }) => {
             </div>
 
             <div style={{ margin: '0 5px 5px auto', height: 'auto' }}>
-                <Text color='gray'>Вадим</Text>
+                <Text color='gray'>{postData.author_name}</Text>
             </div>
         </div >
     )
