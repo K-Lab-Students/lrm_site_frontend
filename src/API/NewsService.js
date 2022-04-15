@@ -20,10 +20,12 @@ export default class NewsService {
     }
 
     static async add(post) {
+        console.log(post);
         const response = await axios.post(this.host + this.path, post, NetworkCommon.getConfig())
     }
 
     static async updateById(id, post) {
+        console.log(post);
         const response = await axios.put(this.host + this.path + '/' + id, post, NetworkCommon.getConfig())
     }
 

@@ -12,7 +12,6 @@ const ProjectsPageGrid = ({ width }) => {
     const [projects, setProjects] = useState([])
     const [fetchProjects, isNewsLoading, projectsError] = useFetching(async () => {
         const proj = await ProjectsService.get()
-        console.log(proj);
         // const proj = await ProjectsService.getProjectById(10)
         setProjects(proj)
     })

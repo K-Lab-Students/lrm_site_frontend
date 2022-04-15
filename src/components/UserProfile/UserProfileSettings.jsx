@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TextInput, Divider, MultiSelect, Button, Select } from '@mantine/core'
+import { TextInput, Divider, MultiSelect, Button, Select, Avatar } from '@mantine/core'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import UsersService from '../../API/UsersService'
@@ -8,7 +8,7 @@ import { useFetching } from '../../hooks/useFetching'
 import CompetitionsService from '../../API/CompetitionsService'
 import StudyPlacesService from '../../API/StudyPlaceService'
 
-import { Dropzone, DropzoneStatus, IMAGE_MIME_TYPE } from '@mantine/dropzone';
+import { Dropzone, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import { Group, Text, useMantineTheme, MantineTheme } from '@mantine/core';
 import FacultiesService from '../../API/FacultiesService'
 
@@ -17,104 +17,82 @@ const UserProfileSettings = () => {
     const [sname, setSname] = useState('')
     const [name, setName] = useState('')
     const [pname, setPname] = useState('')
-    const [date, setDate] = useState('')
-    const [fac, setFac] = useState('')
-    const [stPlase, setStPlace] = useState('')
 
-    const [competitions, setCompetitions] = useState([])
-    const [studyPlace, setStudyPlace] = useState([])
-    const [faculty, setFaculty] = useState([])
-    const [allCompet, setAllCompet] = useState([])
+    // const [date, setDate] = useState('')
+
+    const [userFaculty, setUserFaculty] = useState(0)
+    const [userStudyPlace, setUserStudyPlace] = useState(0)
+
+    const [defaultCompetitionsList, setDefaultCompetitionsList] = useState([])
+    const [defaultStudyPlaceValue, setDefaultStudyPlaceValue] = useState('')
+    const [defaultFacultyValue, setDefaultFacultyValue] = useState('')
+
+    const [studyPlaceList, setStudyPlaceList] = useState([])
+    const [facultyList, setFacultyList] = useState([])
+    const [competitionsList, setCompetitionsList] = useState([])
 
     const [image, setImage] = useState({})
     const [imageBase64, setImageBase64] = useState('')
 
-    const [buttonClicked, setButtonClicked] = useState(false)
     const [imageLoading, setImageLoading] = useState(false)
+
+    const convertResponseToForm = (respList, setFunction) => {
+        let defaultArray = []
+        respList.forEach(item => {
+            defaultArray.push({
+                value: item.id,
+                label: item.name
+            })
+        })
+        setFunction(defaultArray)
+    }
+
+    const convertCompetitionsToForm = (respList) => {
+        return respList.slice(1, respList.length - 1).split(',').map(value => parseInt(value))
+    }
 
     const [fetchUsers, isLoading, error] = useFetching(async () => {
         const userInfo = await UsersService.getById()
-        const competitionsList = await CompetitionsService.get()
-        const studyPlaceList = await StudyPlacesService.get()
-        const facultiesList = await FacultiesService.get()
-
+        const competitionsResponce = await CompetitionsService.get()
+        const studyPlaceResponce = await StudyPlacesService.get()
+        const facultiesResponce = await FacultiesService.get()
 
         setSname(userInfo.sname)
         setName(userInfo.name)
         setPname(userInfo.pname)
-        // setDate(userInfo.birthday)
-        setFac(userInfo.faculty_name)
-        // setStudyPlace(userInfo.study_place_name)
 
-        let defaultCompetitionsArray = []
-        for (let i = 0; i < userInfo.competitions.length; ++i) {
-            defaultCompetitionsArray.push({
-                value: userInfo.competitions[i].id,
-                label: userInfo.competitions[i].name
-            })
-        }
-        setCompetitions(defaultCompetitionsArray)
+        setUserFaculty(userInfo.faculty_id)
+        setUserStudyPlace(userInfo.study_place_id)
 
-        let defaultStudyPlacesArray = []
-        // console.log(defaultStudyPlacesArray);
-        for (let i = 0; i < studyPlaceList.length; ++i) {
-            defaultStudyPlacesArray.push({
-                value: studyPlaceList[i].id,
-                label: studyPlaceList[i].name
-            })
-        }
-        setStudyPlace(defaultStudyPlacesArray)
+        convertResponseToForm(studyPlaceResponce, setStudyPlaceList)
+        convertResponseToForm(facultiesResponce, setFacultyList)
+        convertResponseToForm(competitionsResponce, setCompetitionsList)
 
-        let defaultFacultiesArray = []
-        for (let i = 0; i < facultiesList.length; ++i) {
-            defaultFacultiesArray.push({
-                value: facultiesList[i].id,
-                label: facultiesList[i].name
-            })
-        }
-        setFaculty(defaultFacultiesArray)
-
-        let arrComp = []
-        for (let i = 0; i < competitionsList.length; ++i) {
-            arrComp.push({
-                value: competitionsList[i].id,
-                label: competitionsList[i].name
-            })
-        }
-        setAllCompet(arrComp)
+        setDefaultFacultyValue(userInfo.faculty_name)
+        setDefaultStudyPlaceValue(userInfo.study_place_name)
+        setDefaultCompetitionsList(convertCompetitionsToForm(userInfo.competitions_id))
     })
 
     useEffect(() => {
         fetchUsers()
     }, [])
 
-
-
-    const theme = useMantineTheme();
-
-    const dropzoneChildren = (status, theme) => (
-        <Group position="center" spacing="xl" style={{ minHeight: 220, pointerEvents: 'none' }}>
-            <div>
-                <Text size="xl" inline>
-                    Drag images here or click to select files
-                </Text>
-                <Text size="sm" color="dimmed" inline mt={7}>
-                    Attach as many files as you like, each file should not exceed 5mb
-                </Text>
-                <Text>{status.accepted}</Text>
-            </div>
-        </Group>
+    const dropzoneChildren = (status) => (
+        <Avatar size={150} radius={150} alt='user-avatar' src={imageBase64}>U-M</Avatar>
     );
 
     function getBase64(file) {
         var reader = new FileReader();
         try {
             reader.readAsDataURL(file);
-            reader.onload = function () {
+            reader.onloadstart = function () {
+                setImageLoading(true)
+            }
+            reader.onloadend = function () {
+                setImageLoading(false)
                 setImageBase64(reader.result)
-                console.log('here ' + imageBase64);
-                console.log('end');
-            };
+                console.log(reader.result);
+            }
             reader.onerror = function (error) {
                 console.log('Error: ', error);
             };
@@ -123,21 +101,8 @@ const UserProfileSettings = () => {
         }
     }
 
-    const cb = () => {
-        setButtonClicked(true)
-        getBase64(image)
-        setImageLoading(true)
-    }
-
-    let timerId = setInterval(() => {
-        if (imageBase64 !== '') {
-            setImageLoading(false)
-            clearInterval(timerId)
-        }
-    }, 100)
-    // setTimeout(() => { ; alert('stop'); }, 5000);
-
     const sendData = () => {
+        let compstring = '{' + defaultCompetitionsList.map(c => `${c}`) + '}'
         const user = {
             id: 0,
             sname: sname,
@@ -145,50 +110,80 @@ const UserProfileSettings = () => {
             pname: pname,
             birthday: '2001-01-01',
             file: imageBase64,
-            faculty_id: fac,
-            study_place_id: stPlase
-
+            faculty_id: parseInt(userFaculty),
+            study_place_id: parseInt(userStudyPlace),
+            competitions_id: compstring
         }
+        console.log(user);
         UsersService.update(user)
             .then((resp) => { })
             .catch(e => console.log(e))
+        window.location.reload()
     }
 
     return (
         <div>
+            <h2>Изменения фотографии профиля</h2>
+            <Divider style={{ marginBottom: 15, marginTop: 4 }} />
+
             <Dropzone
                 loading={imageLoading}
                 onDrop={(files) => { console.log('accepted files', files); setImage(files[0]) }}
                 onReject={(files) => console.log('rejected files', files)}
-                maxSize={3 * 1024 ** 2}
+                maxSize={10 * 1024 ** 2}
                 accept={IMAGE_MIME_TYPE}
                 multiple={false}
             >
-                {(status) => dropzoneChildren(status, theme)}
+                {(status) => dropzoneChildren(status)}
             </Dropzone>
 
-            <Button onClick={cb}>Загрузить фотографию</Button>
+            <Button onClick={() => getBase64(image)}>Загрузить фотографию</Button>
 
 
             <h2 style={{ margin: 0 }}>Личные данные</h2>
             <Divider style={{ marginBottom: 15, marginTop: 4 }} />
 
-            Фамилия
-            <TextInput style={{ width: 500 }} placeholder={sname} onChange={e => setSname(e.target.value)}></TextInput>
-            Имя
-            <TextInput style={{ width: 500 }} placeholder={name} onChange={e => setName(e.target.value)}></TextInput>
-            Отчество
-            <TextInput style={{ width: 500 }} placeholder={pname} onChange={e => setPname(e.target.value)}></TextInput>
+            <TextInput
+                label={'Фамилия'}
+                style={{ width: 500 }}
+                placeholder={sname}
+                onChange={e => setSname(e.target.value)}
+            />
+            <TextInput
+                label={'Имя'}
+                style={{ width: 500 }}
+                placeholder={name}
+                onChange={e => setName(e.target.value)}
+            />
+            <TextInput
+                label={'Отчество'}
+                style={{ width: 500 }}
+                placeholder={pname}
+                onChange={e => setPname(e.target.value)}
+            />
             {/* Дата рождения
             <TextInput type='date' style={{ width: 500 }} placeholder={date} onChange={setDate}></TextInput> */}
-            Факультет
-            <Select style={{ width: 500 }} data={faculty} value={fac} onChange={setFac}></Select>
-            Место учебы
-            <Select style={{ width: 500 }} data={studyPlace} value={studyPlace} onChange={setStPlace}></Select>
-            Представляемые компетенции
+            <Select
+                label={'Факультет'}
+                style={{ width: 500 }}
+                data={facultyList}
+                placeholder={defaultFacultyValue}
+                value={userFaculty}
+                onChange={e => { setUserFaculty(e); }}
+            />
+            <Select
+                label={'Место учебы'}
+                style={{ width: 500 }}
+                data={studyPlaceList}
+                placeholder={defaultStudyPlaceValue}
+                value={userStudyPlace}
+                onChange={e => { setUserStudyPlace(e); }}
+            />
             <MultiSelect
-                data={allCompet}
-                defaultValue={competitions}
+                label={'Представляемые компетенции'}
+                data={competitionsList}
+                value={defaultCompetitionsList}
+                onChange={setDefaultCompetitionsList}
             />
             <Button onClick={sendData}>Изменить данные</Button>
         </div>
