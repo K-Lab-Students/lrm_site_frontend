@@ -35,8 +35,8 @@ const PostsGrid = ({ width }) => {
                 <RichTextEditor value={postBody} defaultValue={posts.body} onChange={setPostBody} sticky={true} />
                 
                 <Group>
-                    <Button type='submit' onClick={() => {
-                        NewsService.updateById(newsId, { id: 0, name: '', body: postBody })
+                    <Button type='submit' onClick={async () => {
+                        await NewsService.updateById(newsId, { id: 0, name: '', body: postBody })
                         setModalOpened(false)
                         window.location.reload()
                     }}>Добавить</Button>
@@ -45,7 +45,6 @@ const PostsGrid = ({ width }) => {
                     >Отмена</Button>
                 </Group>
             </Modal>
-
 
             {newsError &&
                 <h1>АААА ${newsError} АААА</h1>

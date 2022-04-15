@@ -32,9 +32,10 @@ const UserProfilePosts = () => {
 
             <RichTextEditor value={postBody} onChange={setPostBody} sticky={true} />
             <Group>
-                <Button onClick={() => {
-                    NewsService.add({ id: 0, name: '', body: postBody })
+                <Button onClick={async () => {
+                    await NewsService.add({ id: 0, name: '', body: postBody })
                     window.location.reload()
+                    console.log(postBody);
                 }}>Создать запись</Button>
             </Group>
             <Modal
@@ -46,8 +47,9 @@ const UserProfilePosts = () => {
                 <RichTextEditor value={postBody} defaultValue={userPosts.body} onChange={setPostBody} sticky={true} />
 
                 <Group>
-                    <Button type='submit' onClick={() => {
-                        NewsService.updateById(postId, { id: 0, name: '', body: postBody })
+                    <Button type='submit' onClick={async () => {
+                        console.log(postBody);
+                        await NewsService.updateById(postId, { id: 0, name: '', body: postBody })
                         setModalOpened(false)
                         window.location.reload()
                     }}>Добавить</Button>

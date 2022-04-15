@@ -91,6 +91,7 @@ const UserProfileSettings = () => {
             reader.onloadend = function () {
                 setImageLoading(false)
                 setImageBase64(reader.result)
+                console.log(reader.result);
             }
             reader.onerror = function (error) {
                 console.log('Error: ', error);
@@ -124,7 +125,7 @@ const UserProfileSettings = () => {
         <div>
             <h2>Изменения фотографии профиля</h2>
             <Divider style={{ marginBottom: 15, marginTop: 4 }} />
-            
+
             <Dropzone
                 loading={imageLoading}
                 onDrop={(files) => { console.log('accepted files', files); setImage(files[0]) }}

@@ -24,6 +24,8 @@ const Post = ({ postData, setModalOpened, setPostBody, setNewsId }) => {
         window.location.reload()
     }
 
+    // console.log(postData.body);
+
     return (
         <div className={[styles.card]}>
             {JSON.parse(localStorage.getItem('role')) === 0 || JSON.parse(localStorage.getItem('id')) === postData.author_id
@@ -46,9 +48,16 @@ const Post = ({ postData, setModalOpened, setPostBody, setNewsId }) => {
                 </Group>
             </div>
 
-            <div style={{ margin: '0 5px 5px auto', height: 'auto' }}>
-                <Text color='gray'>{postData.author_name}</Text>
-            </div>
+            <Group grow>
+                <div style={{ margin: '0 5px 5px auto', height: 'auto' }}>
+                    <Text color='gray'>{postData.author_name}</Text>
+                </div>
+
+                <div style={{ margin: '0 5px 5px auto', height: 'auto' }}>
+                    <Text color='gray'>{postData.create_date.split('T')[0]}</Text>
+                </div>
+            </Group>
+
         </div >
     )
 }
