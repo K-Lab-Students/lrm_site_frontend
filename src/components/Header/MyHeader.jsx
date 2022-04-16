@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Header, MediaQuery, Burger, useMantineTheme, Container, Image, Button } from '@mantine/core';
 
-import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn, ButtonProjects, ButtonSingUp, ButtonToLK } from '../HeaderButtons/HeaderButtons'
+import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn, ButtonProjects, ButtonSingUp, ButtonToLK, ButtonAdmin } from '../HeaderButtons/HeaderButtons'
 
 import { Link } from "react-router-dom";
 
@@ -31,6 +31,7 @@ const MyHeader = ({ openedMenu, setOpenedMenu, isLogined }) => {
                         <Link to='/competitions' children={<ButtonCompetentions />} />
                         <Link to='/projects' children={<ButtonProjects />} />
                         <Link to='/about' children={<ButtonAbout />} />
+                        {/* <Link to='/admin-page' children={<ButtonAdmin />} /> */}
                     </Container>
                 </MediaQuery>
 

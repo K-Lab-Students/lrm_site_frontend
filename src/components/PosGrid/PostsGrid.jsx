@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Post from '../Post/Post'
 import Body from '../Body/Body'
 
-import { Container, Text, Divider, Group, TypographyStylesProvider, Button, ActionIcon, Modal } from '@mantine/core'
+import { Container, Text, Divider, Group, TypographyStylesProvider, Button, ActionIcon, Modal, Loader } from '@mantine/core'
 import RichTextEditor, { RichTextEditorLabels } from '@mantine/rte'
 
 import NewsService from '../../API/NewsService'
@@ -33,7 +33,7 @@ const PostsGrid = ({ width }) => {
                 onClose={() => setModalOpened(false)}
             >
                 <RichTextEditor value={postBody} defaultValue={posts.body} onChange={setPostBody} sticky={true} />
-                
+
                 <Group>
                     <Button type='submit' onClick={async () => {
                         await NewsService.updateById(newsId, { id: 0, name: '', body: postBody })
@@ -50,7 +50,8 @@ const PostsGrid = ({ width }) => {
                 <h1>АААА ${newsError} АААА</h1>
             }
             {isNewsLoading
-                ? <h1>АААА ИДЕТ ЗАГРУЗКА НОВОСТЕЙ АААА</h1>
+                // ? <h1>АААА ИДЕТ ЗАГРУЗКА НОВОСТЕЙ АААА</h1>
+                ? <center><Loader /></center>
                 : posts.map(post => {
                     return <Post postData={post} key={post.id} setModalOpened={setModalOpened} setPostBody={setPostBody} setNewsId={setNewsId} />
                 })
