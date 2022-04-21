@@ -1,0 +1,12 @@
+.personCard {
+    width: 200px;
+    height: 335px;
+    margin: auto;
+}
+
+.userAvatar {
+    object-fit: contain;
+    width: 100px;
+    height: 150px;
+    position: relative;
+}
