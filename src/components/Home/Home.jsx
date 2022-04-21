@@ -1,39 +1,36 @@
 import React from 'react'
-import { Container, Grid, Image } from '@mantine/core'
+import { Container, Grid, Image, Text } from '@mantine/core'
 import { Link } from 'react-router-dom'
 import Body from '../Body/Body'
 
-import logoBlack from '../../pics/logoBlack.png'
+import logoBlack from '../../pics/homepic.jpeg'
+import styles from './Home.module.css'
 
 const Home = ({ width }) => {
     return (
         <Body width={width}>
-            <Container>
-                <Grid >
-                    <Grid.Col xs={5} sm={4} md={3} style={{ margin: 'auto' }}>
-                        <h1 style={{ margin: 'auto', width: 170 }}>
-                            <div>
-                                Будущее.
-                            </div>
-                            <div>
-                                Инновации.
-                            </div>
-                            <div>
-                                Роботы.
-                            </div>
-                        </h1>
-                    </Grid.Col>
-                    <Grid.Col xs={5} sm={4} md={3} style={{ margin: 'auto' }}>
-                        <Image src={logoBlack} width={234} height={360} style={{ margin: 'auto', width: 234 }} fit="contain" alt='k-lab logo' />
-                    </Grid.Col>
-                </Grid>
-            </Container>
-            <h1>Используем технологий 21 века чтобы сделать мир лучше.</h1>
-            <h1>В нашей команде трудятся <Link to='/about'>30 специалистов</Link> различных направленностей и именно вы можете стать одним из них.</h1>
-            <h1>На нашей платформе вы можете связаться с нами для решения своих самых абициозных задач на базе лаборатории робототехники и мехатроники КубГУ,
-                узнать уже о готовых проектах, либо же принять участие в текущих разработках.</h1>
-            <h1>Присоединяйтесь к нашей команде, чтобы первыми ступить в технологичное будущее.</h1>
-        </Body>
+            <Grid columns={6}>
+                <Grid.Col xs={5} sm={4} md={3}>
+                    <Container className={styles.mainWritesContainer}>
+                        <Text className={styles.mainFontStyle}>Будущее.</Text>
+                        <Text className={styles.mainFontStyle}>Инновации.</Text>
+                        <Text className={styles.mainFontStyle}>Роботы.</Text>
+                    </Container>
+                    <Container>
+                        <Text className={styles.textFontStyle}>K-Lab — плаформа для решения ваших самых амбициозных задач
+                            на базе лаборатории робототехники и мехатроники КубГУ. С её помощью вы всегда можете узнавать новости
+                            об уже готовых проектах, принять участие в текущих разработках и оставаться на связи с нами.
+                        </Text>
+                        <Text className={styles.textFontStyle}>
+                            В нашей команде трудятся 30 специалистов различных направленностей, присоединяйтесь и вы к технологичному будущему!
+                        </Text>
+                    </Container>
+                </Grid.Col>
+                <Grid.Col xs={5} sm={4} md={3}>
+                    <img src={logoBlack} className={styles.imageStyle} />
+                </Grid.Col>
+            </Grid>
+        </Body >
     )
 }
 

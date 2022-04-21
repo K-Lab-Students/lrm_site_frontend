@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { BrowserRouter as Router } from "react-router-dom";
 
+import { Global } from '@mantine/core';
+
 import MyHeader from './components/Header/MyHeader';
 import LeftMenu from './components/LeftMenu/LeftMenu';
 import PageBody from './components/PageBody/PageBody';
 import useToken from './hooks/useToken';
+
+// import font from '../public/fonts/FiraCode-VariableFont_wght.ttf'
 
 const App = () => {
     const [openedMenu, setOpenedMenu] = useState(false)
@@ -26,11 +30,15 @@ const App = () => {
 
     return (
         <Router>
-            <MyHeader openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} isLogined={logined} />
+            {/* <div style={{
+                fontFamily: "FiraCode-VariableFont"
+            }}> */}
+                <MyHeader openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} isLogined={logined} />
 
-            <LeftMenu openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} isLogined={logined} />
+                <LeftMenu openedMenu={openedMenu} setOpenedMenu={setOpenedMenu} isLogined={logined} />
 
-            <PageBody isLogined={logined} setIsLogined={setLogined} />
+                <PageBody isLogined={logined} setIsLogined={setLogined} />
+            {/* </div> */}
         </Router>
     );
 }

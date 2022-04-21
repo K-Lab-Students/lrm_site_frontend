@@ -2,11 +2,12 @@ import React from 'react'
 
 import { Text, Group, TypographyStylesProvider, ActionIcon } from '@mantine/core'
 
-import { X, Pencil } from 'tabler-icons-react';
-
 import styles from './PostStyle.module.css'
 
 import NewsService from '../../API/NewsService'
+
+import CloseIcon from '../../pics/Close.svg'
+import EditIcon from '../../pics/Edit-2.svg'
 
 const Post = ({ postData, setModalOpened, setPostBody, setNewsId }) => {
 
@@ -32,8 +33,8 @@ const Post = ({ postData, setModalOpened, setPostBody, setNewsId }) => {
                 ?
                 (< div style={{ margin: '0 0 0 auto', height: 'auto' }}>
                     <Group spacing={1}>
-                        <ActionIcon color={'green'} onClick={editButtonCB}><Pencil /></ActionIcon>
-                        <ActionIcon color={'red'} onClick={deleteButtonCB}><X /></ActionIcon>
+                        <ActionIcon color={'green'} onClick={editButtonCB}><img src={EditIcon} /></ActionIcon>
+                        <ActionIcon color={'red'} onClick={deleteButtonCB}><img src={CloseIcon} /></ActionIcon>
                     </Group>
                 </div>)
                 : (<>

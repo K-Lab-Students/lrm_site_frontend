@@ -2,14 +2,14 @@ import React from 'react'
 
 import { Button, Text } from '@mantine/core'
 
-const MyButton = ({ text, setState, buttonId, styles = {}, subtle = true }) => {
+const MyButton = ({ text, setState, buttonId, styles = {}, subtle = true, onClick, color }) => {
     return (
         <Button
             variant={subtle ? 'subtle' : 'filled'}
             style={styles}
-        // onClick={() => setState(buttonId)}
+            onClick={onClick}
         >
-            <Text>{text}</Text>
+            <Text color={color}>{text}</Text>
         </Button>
     )
 }
@@ -22,6 +22,7 @@ const ButtonNews = ({ setState, style = {} }) => {
             setState={setState}
             styles={style}
             text='Новости'
+            color='black'
         />
     )
 }
@@ -34,6 +35,7 @@ const ButtonProjects = ({ setState, style = {} }) => {
             setState={setState}
             styles={style}
             text='Проекты'
+            color='black'
         />
     )
 }
@@ -46,6 +48,7 @@ const ButtonCompetentions = ({ setState, style = {} }) => {
             setState={setState}
             styles={style}
             text='Компетенции'
+            color='black'
         />
     )
 }
@@ -58,6 +61,7 @@ const ButtonAbout = ({ setState, style = {} }) => {
             setState={setState}
             styles={style}
             text='О нас'
+            color='black'
         />
     )
 }
@@ -70,6 +74,7 @@ const ButtonAdmin = ({ setState, style = {} }) => {
             setState={setState}
             styles={style}
             text='Админка'
+            color='black'
         />
     )
 }
@@ -82,7 +87,7 @@ const ButtonSingIn = ({ setState, style = {} }) => {
             setState={setState}
             styles={style}
             text='Вход'
-            subtle={false}
+            color='black'
         />
     )
 }
@@ -95,7 +100,7 @@ const ButtonSingUp = ({ setState, style = {} }) => {
             setState={setState}
             styles={style}
             text='Регистрация'
-            subtle={false}
+            color='black'
         />
     )
 }
@@ -108,7 +113,21 @@ const ButtonToLK = ({ setState, style = {} }) => {
             setState={setState}
             styles={style}
             text='Личный кабинет'
-            subtle={false}
+            color='#008B91'
+        />
+    )
+}
+
+const ButtonExit = ({ setState, style = {}, onClick }) => {
+    const buttonId = 'exit'
+    return (
+        <MyButton
+            buttonId={buttonId}
+            setState={setState}
+            styles={style}
+            text='Выход'
+            onClick={onClick}
+            color='black'
         />
     )
 }
@@ -121,5 +140,6 @@ export {
     ButtonSingIn,
     ButtonSingUp,
     ButtonToLK,
-    ButtonAdmin
+    ButtonAdmin,
+    ButtonExit
 }

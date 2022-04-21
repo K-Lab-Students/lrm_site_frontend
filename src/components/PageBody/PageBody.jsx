@@ -19,7 +19,7 @@ import AdminPage from "../AdminPage/AdminPage";
 
 const PageBody = ({ isLogined, setIsLogined }) => {
 
-    const contentWidth = 1000
+    const contentWidth = 1596
 
     return (
         <div className={styles.pageBody}>
@@ -64,6 +64,7 @@ const PageBody = ({ isLogined, setIsLogined }) => {
                     <NotFoundPage width={contentWidth} />
                 </Route>
             </Switch>
+            
             <Footer />
         </div>
     )

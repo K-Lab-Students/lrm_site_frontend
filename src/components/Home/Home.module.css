@@ -1,0 +1,30 @@
+.mainFontStyle {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 450;
+  font-size: 96px;
+  line-height: 126px;
+}
+
+.textFontStyle {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.mainWritesContainer {
+margin-top: 100px;
+  margin-bottom: 100px;
+  left: 162px;
+  top: 222px;
+}
+
+.imageStyle {
+  position: absolute;
+  width: 789px;
+  height: 800px;
+  left: 968px;
+  top: 119px;
+}
