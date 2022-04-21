@@ -1,7 +1,7 @@
 
 export default class NetworkCommon {
-    static serverHost = 'http://192.168.1.95:8080'
-    // static serverHost = 'http://localhost:8080'
+    // static serverHost = 'http://192.168.1.95:8080'
+    static serverHost = 'http://localhost:8080'
     // static serverHost = 'https://backend.inquban.ru'
 
     static getConfig = () => {

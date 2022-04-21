@@ -62,6 +62,18 @@ const ButtonAbout = ({ setState, style = {} }) => {
     )
 }
 
+const ButtonAdmin = ({ setState, style = {} }) => {
+    const buttonId = 'admin'
+    return (
+        <MyButton
+            buttonId={buttonId}
+            setState={setState}
+            styles={style}
+            text='Админка'
+        />
+    )
+}
+
 const ButtonSingIn = ({ setState, style = {} }) => {
     const buttonId = 'singin'
     return (
@@ -108,5 +120,6 @@ export {
     ButtonAbout,
     ButtonSingIn,
     ButtonSingUp,
-    ButtonToLK
+    ButtonToLK,
+    ButtonAdmin
 }

@@ -15,6 +15,7 @@ import CompetitionsPage from "../CompetitionsPage/CompetitionsPage";
 import ReginstrationPage from "../ReginstrationPage/ReginstrationPage";
 
 import styles from './PageBodyStyle.module.css'
+import AdminPage from "../AdminPage/AdminPage";
 
 const PageBody = ({ isLogined, setIsLogined }) => {
 
@@ -55,6 +56,9 @@ const PageBody = ({ isLogined, setIsLogined }) => {
                 </Route>
                 <Route path='/lk'>
                     <UserProfile width={contentWidth} />
+                </Route>
+                <Route path='/admin-page'>
+                    <AdminPage width={contentWidth} />
                 </Route>
                 <Route path="*">
                     <NotFoundPage width={contentWidth} />
