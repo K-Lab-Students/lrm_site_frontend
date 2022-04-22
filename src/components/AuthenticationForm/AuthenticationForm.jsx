@@ -30,14 +30,15 @@ const AuthenticationForm = ({ width, setIsLogined }) => {
     }
 
     return (
-        <Body width={width}>
+        <Body width={width} pageName='Вход'>
             <Container className={styles.authContainer}>
                 <div className={styles.authDiv}>
-                    <Text>Вход</Text>
-                    <TextInput label='Логин' onChange={e => setLogin(e.target.value)} />
-                    <PasswordInput label='Пароль' onChange={e => setPassword(e.target.value)} />
+                    <Text className={styles.authFontLogin}>Логин</Text>
+                    <input type='text' className={styles.authTextInput} onChange={e => setLogin(e.target.value)} />
+                    <Text className={styles.authFontPass}>Пароль</Text>
+                    <input type='password' className={styles.authTextInput} onChange={e => setPassword(e.target.value)} />
                     <Text color='red'>{loginError}</Text>
-                    <Button onClick={auth}>Вход</Button>
+                    <Button className={styles.authButton} onClick={auth}>Вход</Button>
                 </div>
             </Container>
         </Body>

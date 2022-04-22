@@ -25,7 +25,7 @@ const PostsGrid = ({ width }) => {
     }, [])
 
     return (
-        <Body width={width}>
+        <Body width={width} pageName='Новости'>
             <Modal
                 hideCloseButton={true}
                 size='lg'

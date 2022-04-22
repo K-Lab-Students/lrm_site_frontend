@@ -20,13 +20,8 @@ const ProjectsPageGrid = ({ width }) => {
         projectIter = 0
     }, [])
 
-    
-
     return (
-        <Body width={width}>
-            <center>
-                <h1>Наши проекты</h1>
-            </center>
+        <Body width={width} pageName='Наши проекты'>
             {/* {projectsError &&
                 <h1>АААА ${projectsError} АААА</h1>
             } */}

@@ -1,12 +1,43 @@
 .personCard {
-    width: 200px;
-    height: 335px;
-    margin: auto;
+  width: 301px;
+  height: 494px;
+  margin: auto;
 }
 
 .userAvatar {
-    object-fit: contain;
-    width: 100px;
-    height: 150px;
-    position: relative;
+  object-fit: contain;
+  width: 301px;
+  height: 301px;
+  position: relative;
+}
+
+.textNameStyle {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  margin-top: 12px;
+}
+
+.textStudyStyle {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  margin-top: 4px;
+  margin-bottom: 5px;
+}
+
+.badgeStyle {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 4px;
+  margin-left: 0;
 }

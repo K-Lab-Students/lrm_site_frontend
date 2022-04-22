@@ -16,18 +16,11 @@ const MyHeader = ({ openedMenu, setOpenedMenu, isLogined }) => {
 
     const stickyHeader = openedMenu ? {} : { position: 'sticky' }
 
-    const GetIconUser = () => {
-        return <img src={LogoUser} />
-    }
-    const GetIconLogout = () => {
-        return <img src={logoLogOut} />
-    }
-
     return (
         <Header height={90} padding="md" style={stickyHeader}>
             <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
                 <MediaQuery smallerThan="sm" styles={{ paddingLeft: '10px !important' }}>
-                    <Container size='sm' style={{ paddingLeft: 162, marginRight: 0, marginLeft: 0 }}>
+                    <Container size='sm' style={{ paddingLeft: 138, marginRight: 0, marginLeft: 0 }}>
                         <Link to='/' children={
                             <Image src={logoBlack} fit="contain" alt='k-lab logo' />
                         } />
@@ -50,13 +43,14 @@ const MyHeader = ({ openedMenu, setOpenedMenu, isLogined }) => {
                                 <Link to='/sing-up' children={<ButtonSingUp style={{ margin: '10px !important' }} />} />
                                 <Link to='/sign-in' children={<ButtonSingIn style={{ margin: '10px !important' }} />} />
                             </>
-                            : <Group>
+                            : <Group spacing='xs'>
                                 <Link to='/lk'>
-                                    <Button variant='subtle' leftIcon={<GetIconUser />}>
+                                    <Button variant='subtle' leftIcon={<img src={LogoUser} />}>
                                         <Text color='#008B91'>Личный кабинет</Text>
                                     </Button>
                                 </Link>
-                                <Button variant='subtle' rightIcon={<GetIconLogout />} onClick={(e) => {
+                                <Text>|</Text>
+                                <Button variant='subtle' rightIcon={<img src={logoLogOut} />} onClick={(e) => {
                                     localStorage.clear()
                                     window.location.replace('/')
                                 }}>

@@ -1,18 +1,78 @@
 .authContainer {
-    width: 400px;
-    height: 400px;
-    vertical-align: middle;
-    margin: auto;
-    border: 1px solid grey;
-    border-radius: 10px;
+  width: 566px;
+  /* height: 400px; */
+  /* vertical-align: middle; */
+  margin-left: 0px;
+  padding: 0px;
+  /* border: 1px solid grey; */
+  /* border-radius: 10px; */
 }
 
 .authDiv {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    vertical-align: middle;
-    flex-direction: column;
-    margin: 50px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  vertical-align: middle;
+  flex-direction: column;
+  /* margin: 50px; */
 }
 
+.authButton {
+  width: 303px;
+  height: 60px;
+  background: #fd5b00;
+  border-radius: 20px;
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 31px;
+  margin-top: 59px;
+}
+
+.authFontTitle {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 63px;
+  width: 116px;
+  height: 63px;
+}
+
+.authFontLogin {
+  width: 72px;
+  height: 31px;
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  margin-top: 67px;
+}
+
+.authFontPass {
+  width: 87px;
+  height: 31px;
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  margin-top: 56px;
+}
+
+.authTextInput {
+  width: 566px;
+  height: 31px;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 1px solid #000000;
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  margin-top: 16px;
+}
