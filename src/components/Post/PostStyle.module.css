@@ -1,44 +1,93 @@
-.post {
-    margin: 10px;
-    margin-top: 0;
-    padding: 10px;
-    padding-top: 20px;
-    /* display: contents;    */
-    background: white;
-    border:0.2px solid gray;
-    box-shadow: 10px 5px 5px grey;
-    /* border-radius: 10px; */
+.contentBody {
+  /* min-width: 59vw; */
+  width: 1133px;
+  min-width: 500px;
+  max-width: 1133px;
+  /* position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin-bottom: 1rem !important; */
 }
 
-.card {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: 0.25rem;
-    /* margin-top: 0.5rem !important; */
-    margin-bottom: 1rem !important;
+.post {
+  display: flex;
+  /* justify-content: space-between; */
 }
 
 .cardHeader {
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 0;
-    background-color: rgba(0,0,0,.03);
-    border-bottom: 1px solid rgba(0,0,0,.125);
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .cardBody {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding: 1.25rem;
+  /* -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem; */
+  padding-left: 23px;
+}
+
+.postButtonsStyle {
+  display: flex;
+  justify-content: space-between;
+  width: 88px;
+  height: 30px;
+  margin: 0 0 0 auto;
+}
+
+.titleStyle {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 47px;
+}
+
+.bodyContentStyle {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.authorNameStyle {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 33px;
+}
+
+.dateStyle {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  display: flex;
+  align-items: flex-end;
+  color: #828282;
+  margin-top: 12px;
+}
+
+.dividerStyle {
+    margin-top: 44px;
+    margin-bottom: 50px;
 }

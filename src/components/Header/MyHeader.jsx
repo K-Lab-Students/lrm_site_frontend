@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header, MediaQuery, Burger, useMantineTheme, Container, Image, Button, Text, Group } from '@mantine/core';
+import { Header, MediaQuery, Burger, useMantineTheme, Container, Image, Button, Text, Divider } from '@mantine/core';
 
 import { ButtonNews, ButtonCompetentions, ButtonAbout, ButtonSingIn, ButtonProjects, ButtonSingUp, ButtonToLK, ButtonAdmin, ButtonExit } from '../HeaderButtons/HeaderButtons'
 
@@ -43,20 +43,20 @@ const MyHeader = ({ openedMenu, setOpenedMenu, isLogined }) => {
                                 <Link to='/sing-up' children={<ButtonSingUp style={{ margin: '10px !important' }} />} />
                                 <Link to='/sign-in' children={<ButtonSingIn style={{ margin: '10px !important' }} />} />
                             </>
-                            : <Group spacing='xs'>
+                            : <div style={{ display: 'flex', justifyContent: "space-between" }}>
                                 <Link to='/lk'>
                                     <Button variant='subtle' leftIcon={<img src={LogoUser} />}>
                                         <Text color='#008B91'>Личный кабинет</Text>
                                     </Button>
                                 </Link>
-                                <Text>|</Text>
+                                {/* <Divider orientation='vertical' color='dark'/> */}
                                 <Button variant='subtle' rightIcon={<img src={logoLogOut} />} onClick={(e) => {
                                     localStorage.clear()
                                     window.location.replace('/')
                                 }}>
                                     <Text color='grey'>Выход</Text>
                                 </Button>
-                            </Group>
+                            </div>
                         }
 
 
