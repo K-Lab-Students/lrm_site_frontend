@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-import { Button, Modal, Group, Divider } from '@mantine/core'
+import { Button, Modal, Group, Divider, Text } from '@mantine/core'
 import RichTextEditor from '@mantine/rte'
 import NewsService from '../../API/NewsService'
 import { useFetching } from '../../hooks/useFetching'
 import Post from '../Post/Post'
+
+import styles from './UserProfileSettingsStyle.module.css'
 
 const UserProfilePosts = () => {
 
@@ -27,12 +29,12 @@ const UserProfilePosts = () => {
 
     return (
         <div>
-            <h2>Создание новости</h2>
+            <h2 >Создание новости</h2>
             <Divider style={{ marginBottom: 15, marginTop: 4 }} />
 
             <RichTextEditor value={postBody} onChange={setPostBody} sticky={true} />
             <Group>
-                <Button onClick={async () => {
+                <Button className={styles.buttonStyle} onClick={async () => {
                     await NewsService.add({ id: 0, name: '', body: postBody })
                     window.location.reload()
                     console.log(postBody);

@@ -12,13 +12,13 @@ import { Dropzone, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import { Group, Text, useMantineTheme, MantineTheme } from '@mantine/core';
 import FacultiesService from '../../API/FacultiesService'
 
+import styles from './UserProfileSettingsStyle.module.css'
+
 const UserProfileSettings = () => {
 
     const [sname, setSname] = useState('')
     const [name, setName] = useState('')
     const [pname, setPname] = useState('')
-
-    // const [date, setDate] = useState('')
 
     const [userFaculty, setUserFaculty] = useState(0)
     const [userStudyPlace, setUserStudyPlace] = useState(0)
@@ -137,55 +137,64 @@ const UserProfileSettings = () => {
                 {(status) => dropzoneChildren(status)}
             </Dropzone>
 
-            <Button onClick={() => getBase64(image)}>Загрузить фотографию</Button>
+            <Button className={styles.buttonStyle} onClick={() => getBase64(image)}>Загрузить фотографию</Button>
 
 
             <h2 style={{ margin: 0 }}>Личные данные</h2>
             <Divider style={{ marginBottom: 15, marginTop: 4 }} />
 
-            <TextInput
-                label={'Фамилия'}
-                style={{ width: 500 }}
+            <Text className={styles.settingsNameStyles}>Фамилия</Text>
+            <input
+                className={styles.inputsStyles}
                 placeholder={sname}
                 onChange={e => setSname(e.target.value)}
             />
-            <TextInput
-                label={'Имя'}
-                style={{ width: 500 }}
+            <Text className={styles.settingsNameStyles}>Имя</Text>
+            <input
+                className={styles.inputsStyles}
                 placeholder={name}
                 onChange={e => setName(e.target.value)}
             />
-            <TextInput
-                label={'Отчество'}
-                style={{ width: 500 }}
+            <Text className={styles.settingsNameStyles}>Отчество</Text>
+            <input
+                className={styles.inputsStyles}
                 placeholder={pname}
                 onChange={e => setPname(e.target.value)}
             />
-            {/* Дата рождения
-            <TextInput type='date' style={{ width: 500 }} placeholder={date} onChange={setDate}></TextInput> */}
+            <Text className={styles.settingsNameStyles}>Факультет</Text>
             <Select
-                label={'Факультет'}
-                style={{ width: 500 }}
                 data={facultyList}
                 placeholder={defaultFacultyValue}
                 value={userFaculty}
                 onChange={e => { setUserFaculty(e); }}
+                classNames={{
+                    input: styles.inputsStyles,
+                    item: styles.selectItems
+                }}
             />
+            <Text className={styles.settingsNameStyles}>Место учёбы</Text>
             <Select
-                label={'Место учебы'}
-                style={{ width: 500 }}
                 data={studyPlaceList}
                 placeholder={defaultStudyPlaceValue}
                 value={userStudyPlace}
                 onChange={e => { setUserStudyPlace(e); }}
+                classNames={{
+                    input: styles.inputsStyles,
+                    item: styles.selectItems
+                }}
             />
+            <Text className={styles.settingsNameStyles}>Представляемые компетенции</Text>
             <MultiSelect
-                label={'Представляемые компетенции'}
                 data={competitionsList}
                 value={defaultCompetitionsList}
                 onChange={setDefaultCompetitionsList}
+                classNames={{
+                    input: styles.inputsStyles,
+                    item: styles.selectItems,
+                    value: styles.selectItems
+                }}
             />
-            <Button onClick={sendData}>Изменить данные</Button>
+            <Button className={styles.buttonStyle} onClick={sendData}>Сохранить</Button>
         </div>
     )
 }

@@ -60,7 +60,7 @@ const PostsGrid = ({ width }) => {
                 ? <center><Loader /></center>
                 : posts.map(post => {
                     newsIterator++
-                    return <Post postData={post} key={post.id} setModalOpened={setModalOpened} setPostBody={setPostBody} setNewsId={setNewsId} addUnderLine={newsIterator < posts.length}/>
+                    return <Post postData={post} key={post.id} setModalOpened={setModalOpened} setPostBody={setPostBody} setNewsId={setNewsId} addUnderLine/>
                 })
             }
         </Body>
