@@ -33,13 +33,14 @@ const Post = ({ postData, setModalOpened, setPostBody, setNewsId, addUnderLine }
     }
 
     useEffect(() => {
-        setInternalBody(PostParser.updateImagesPath(postData.body))
+        // setInternalBody(PostParser.updateImagesPath(postData.body))
         let tmp = PostParser.getFirstImageLink(postData.body)
         if (tmp !== '')
             setFirstImage(NetworkCommon.serverHost + tmp)
         tmp = PostParser.getTitle(postData.body)
         if (tmp !== '')
             setTitle(tmp)
+        setInternalBody(PostParser.getPostPreview(postData.body))
     }, [])
 
     console.log(firstImage);
@@ -62,9 +63,9 @@ const Post = ({ postData, setModalOpened, setPostBody, setNewsId, addUnderLine }
                             <Text className={styles.titleStyle}>{title}</Text>
                             <TypographyStylesProvider>
                                 <div className={styles.bodyContentStyle}
-                                // dangerouslySetInnerHTML={{ __html: internalBody }}
+                                dangerouslySetInnerHTML={{ __html: internalBody }}
 
-                                > некотрый текст</div>
+                                />
                             </TypographyStylesProvider>
 
                             <Text className={styles.authorNameStyle}>{postData.author_name}</Text>

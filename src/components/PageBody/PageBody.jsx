@@ -65,7 +65,7 @@ const PageBody = ({ isLogined, setIsLogined }) => {
                 </Route>
             </Switch>
             
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }
