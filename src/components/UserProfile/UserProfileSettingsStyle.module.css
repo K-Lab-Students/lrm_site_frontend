@@ -1,0 +1,49 @@
+.settingsNameStyles {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  margin-top: 30px;
+}
+
+.inputsStyles {
+  width: 756px;
+  height: auto;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 1px solid #000000;
+  border-radius: 0;
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  margin-top: 16px;
+}
+
+.selectItems {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 31px;
+  border-radius: 0;
+  background: #f2f2f2;
+  height: auto;
+}
+
+.buttonStyle {
+  width: auto;
+  height: 60px;
+  background: #fd5b00;
+  border-radius: 20px;
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 31px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

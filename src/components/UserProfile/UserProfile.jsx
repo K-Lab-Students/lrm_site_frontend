@@ -12,6 +12,8 @@ import { useFetching } from '../../hooks/useFetching'
 import UsersService from '../../API/UsersService'
 import NetworkCommon from '../../common/NetworkCommon'
 
+import styles from './UserProfileStyle.module.css'
+
 const UserProfile = ({ width }) => {
 
     const [imagePath, setImagePath] = useState('')
@@ -34,25 +36,15 @@ const UserProfile = ({ width }) => {
 
     return (
         <Body width={width}>
-            <Container>
-                <Group>
-                    <Avatar size={150} radius={150} alt='user-avatar' src={imagePath}>U-M</Avatar>
-                    <h1>{userLogin}</h1>
-                </Group>
-            </Container>
-            <Grid align='flex-start' style={{ marginTop: 20 }}>
-                <Grid.Col span={3}>
-                    <UserProfileMenu />
-                </Grid.Col>
-                <Grid.Col span={8}>
-                    <Group direction="column">
+            <div className={styles.windowStyle}>
+                <Avatar className={styles.avatarStyle} size={210} radius={105} alt='user-avatar' src={imagePath}>U-M</Avatar>
+                <div className={styles.settingsGroup}>
+                    <div className={styles.userNameStyle}>{userLogin}</div>
+                    <div className={styles.settingsStyle}>
                         <Switch>
                             <Route exact path='/lk/settings'>
                                 <UserProfileSettings />
                             </Route>
-                            {/* <Route path='/lk/my-projects'>
-                                <UserProfileProjects />
-                            </Route> */}
                             <Route path='/lk/my-posts'>
                                 <UserProfilePosts />
                             </Route>
@@ -60,7 +52,12 @@ const UserProfile = ({ width }) => {
                                 <Redirect to='/lk/settings' />
                             </Route>
                         </Switch>
-                    </Group>
+                    </div>
+                </div>
+            </div>
+            <Grid align='flex-start' style={{ marginTop: 20 }}>
+                <Grid.Col span={3}>
+                    <UserProfileMenu />
                 </Grid.Col>
             </Grid>
         </Body>

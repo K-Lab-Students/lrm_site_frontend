@@ -9,6 +9,7 @@ import RichTextEditor, { RichTextEditorLabels } from '@mantine/rte'
 import NewsService from '../../API/NewsService'
 
 import { useFetching } from '../../hooks/useFetching'
+import PostTextParser from '../../libs/PostTextParser'
 
 const PostsGrid = ({ width }) => {
     const [posts, setPosts] = useState([])
@@ -20,12 +21,17 @@ const PostsGrid = ({ width }) => {
         setPosts(news)
     })
 
+    let PostParser = new PostTextParser
+
+    let newsIterator = 0
+
     useEffect(() => {
         fetchNews();
+        newsIterator = 0
     }, [])
 
     return (
-        <Body width={width}>
+        <Body width={width} pageName='Новости'>
             <Modal
                 hideCloseButton={true}
                 size='lg'
@@ -36,7 +42,8 @@ const PostsGrid = ({ width }) => {
 
                 <Group>
                     <Button type='submit' onClick={async () => {
-                        await NewsService.updateById(newsId, { id: 0, name: '', body: postBody })
+                        console.log(PostParser.deleteHostFromPath(postBody));
+                        await NewsService.updateById(newsId, { id: 0, name: '', body: PostParser.deleteHostFromPath(postBody) })
                         setModalOpened(false)
                         window.location.reload()
                     }}>Добавить</Button>
@@ -50,10 +57,10 @@ const PostsGrid = ({ width }) => {
                 <h1>АААА ${newsError} АААА</h1>
             }
             {isNewsLoading
-                // ? <h1>АААА ИДЕТ ЗАГРУЗКА НОВОСТЕЙ АААА</h1>
                 ? <center><Loader /></center>
                 : posts.map(post => {
-                    return <Post postData={post} key={post.id} setModalOpened={setModalOpened} setPostBody={setPostBody} setNewsId={setNewsId} />
+                    newsIterator++
+                    return <Post postData={post} key={post.id} setModalOpened={setModalOpened} setPostBody={setPostBody} setNewsId={setNewsId} addUnderLine/>
                 })
             }
         </Body>

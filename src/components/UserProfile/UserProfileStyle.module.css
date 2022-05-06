@@ -1,0 +1,22 @@
+.userNameStyle {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 52px;
+}
+
+.settingsGroup {
+  margin-left: 65px;
+  margin-top: 75px;
+}
+
+.settingsStyle {
+  margin-top: 90px;
+}
+
+.windowStyle {
+  display: flex;
+  height: 210px;
+  margin-top: 20px;
+}

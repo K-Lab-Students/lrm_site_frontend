@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
-import { Grid, MantineProvider } from '@mantine/core'
+import { Grid, MantineProvider, Text } from '@mantine/core'
 
 import PersonCard from './PersonCard'
 import Body from '../Body/Body'
 import { useFetching } from '../../hooks/useFetching'
 import UsersService from '../../API/UsersService'
+
+import styles from './AboutPageGridStyle.module.css'
 
 const AboutPageGrid = ({ width }) => {
 
@@ -27,8 +29,8 @@ const AboutPageGrid = ({ width }) => {
                 }
             }}
         >
-            <Body width={width}>
-                <Grid columns={12} style={{ zIndex: 0 }}>
+            <Body width={width} pageName='О нас'>
+                <Grid columns={15} style={{ zIndex: 0 }}>
                     {
                         users.map(user => {
                             return (<Grid.Col

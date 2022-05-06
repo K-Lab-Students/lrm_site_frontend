@@ -30,12 +30,7 @@ const CompetitionsPage = ({ width }) => {
     let iter = 0
 
     return (
-        <Body width={width}>
-            <center>
-                <h1>Компетенции</h1>
-                <img src={robotsDiagram} width={700} alt='robotics' />
-            </center>
-
+        <Body width={width} pageName='Компетенции'>
             {
                 compets.map(competition =>
                     <Comptetition imageLeftPos={!(competition.id % 2)} competition={competition} key={iter++} />

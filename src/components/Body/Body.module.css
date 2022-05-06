@@ -1,9 +1,18 @@
 .body {
-    margin: auto;
-    margin-top: 0;
-    padding: 10px;
-    padding-top: 20px;
-    justify-content: center;
-    background: white;
-    min-height: 90vh;
+  margin: auto;
+  /* margin-top: 0; */
+  /* padding: 10px; */
+  padding-top: 20px;
+  /* justify-content: center; */
+  background: white;
+  min-height: 90vh;
+}
+
+.pageNameStyle {
+  font-family: "FiraCode";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 63px;
+  margin-bottom: 20px;
 }
